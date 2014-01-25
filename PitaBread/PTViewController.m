@@ -29,6 +29,9 @@
         [myAlertView show];
         
     }
+    else {
+        [self prepareThePicker];
+    }
     
     
     self.isInitialLoad = TRUE;
@@ -43,8 +46,6 @@
     
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:1];
-
-    [self prepareThePicker];
     
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = .2;
