@@ -30,6 +30,7 @@
 		C4878960189351DE009D79D5 /* PTHotPocketDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = C487895F189351DE009D79D5 /* PTHotPocketDetector.m */; };
 		C487896718936D78009D79D5 /* PTColorHistogram.m in Sources */ = {isa = PBXBuildFile; fileRef = C487896518936D78009D79D5 /* PTColorHistogram.m */; };
 		C487896818936D78009D79D5 /* test_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C487896618936D78009D79D5 /* test_photo.jpg */; };
+		F142F539189377F00077ECBD /* PTCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F142F538189377F00077ECBD /* PTCameraViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		C487896418936D78009D79D5 /* PTColorHistogram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTColorHistogram.h; sourceTree = "<group>"; };
 		C487896518936D78009D79D5 /* PTColorHistogram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTColorHistogram.m; sourceTree = "<group>"; };
 		C487896618936D78009D79D5 /* test_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_photo.jpg; sourceTree = "<group>"; };
+		F142F537189377F00077ECBD /* PTCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCameraViewController.h; sourceTree = "<group>"; };
+		F142F538189377F00077ECBD /* PTCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCameraViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +146,8 @@
 				C487896618936D78009D79D5 /* test_photo.jpg */,
 				23DAACF618933AD30016CE31 /* PTAppDelegate.h */,
 				23DAACF718933AD30016CE31 /* PTAppDelegate.m */,
+				F142F537189377F00077ECBD /* PTCameraViewController.h */,
+				F142F538189377F00077ECBD /* PTCameraViewController.m */,
 				23DAAD24189344270016CE31 /* PTClientSingleton.h */,
 				23DAAD25189344270016CE31 /* PTClientSingleton.m */,
 				23DAAD211893431A0016CE31 /* PTCritter.h */,
@@ -297,6 +302,7 @@
 				23DAACF818933AD30016CE31 /* PTAppDelegate.m in Sources */,
 				C487896718936D78009D79D5 /* PTColorHistogram.m in Sources */,
 				23DAACFE18933AD30016CE31 /* PTViewController.m in Sources */,
+				F142F539189377F00077ECBD /* PTCameraViewController.m in Sources */,
 				23DAAD2F18936B0B0016CE31 /* PTCritterSprite.m in Sources */,
 				23DAAD231893431A0016CE31 /* PTCritter.m in Sources */,
 				23DAAD0118933AD30016CE31 /* PTCritterScene.m in Sources */,

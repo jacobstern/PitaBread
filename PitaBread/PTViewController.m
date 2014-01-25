@@ -8,6 +8,7 @@
 
 #import "PTViewController.h"
 #import "PTCritterScene.h"
+#import "PTCameraViewController.h"
 
 @implementation PTViewController
 
@@ -21,8 +22,9 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [PTCritterScene sceneWithSize:skView.bounds.size];
+    PTCritterScene * scene = [PTCritterScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
+    scene.theParent = self;
     
     // Present the scene.
     [skView presentScene:scene];
@@ -31,6 +33,12 @@
 - (BOOL)shouldAutorotate
 {
     return YES;
+}
+
+- (void)transitionToCameraView
+{
+    PTCameraViewController* cameraViewController = [[PTCameraViewController alloc] init];
+    [self presentViewController:cameraViewController animated:TRUE completion:nil];
 }
 
 - (NSUInteger)supportedInterfaceOrientations

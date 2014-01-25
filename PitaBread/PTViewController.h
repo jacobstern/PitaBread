@@ -11,4 +11,6 @@
 
 @interface PTViewController : UIViewController
 
+- (void)transitionToCameraView;
+
 @end

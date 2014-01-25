@@ -7,7 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "PTViewController.h"
 
 @interface PTCritterScene : SKScene
+
+@property PTViewController* theParent;
 
 @end

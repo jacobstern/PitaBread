@@ -11,5 +11,7 @@
 @interface PTAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property NSString* imageName;
+@property BOOL pictureTaken;
 
 @end
