@@ -16,6 +16,7 @@
 @property (nonatomic, retain) UIImagePickerController* picker;
 @property NSInteger currentImgIdx;
 @property (strong, nonatomic) CMMotionManager *motionManager;
+
 @property PTCritter* currentCritter;
 
 @property UIImageView* bowlImage;

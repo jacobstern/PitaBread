@@ -16,7 +16,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.isInitialLoad = TRUE;
     self.critterBeingBorn = FALSE;
     
@@ -26,10 +25,12 @@
     [runloop addTimer:timer forMode:UITrackingRunLoopMode];
     
     self.moodCounter = 0;
-        [self prepareThePicker];
     
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:1];
+
+    [self prepareThePicker];
+    
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = .2;
     self.motionManager.gyroUpdateInterval = .2;
@@ -48,11 +49,9 @@
                                         [self outputRotationData:gyroData.rotationRate];
                                     }];
     
-    
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(critterBorn)];
     singleTap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:singleTap];
-    
 }
 
 - (void)critterBorn
