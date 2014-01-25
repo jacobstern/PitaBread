@@ -32,6 +32,7 @@
 		C4878960189351DE009D79D5 /* PTHotPocketDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = C487895F189351DE009D79D5 /* PTHotPocketDetector.m */; };
 		C487896718936D78009D79D5 /* PTColorHistogram.m in Sources */ = {isa = PBXBuildFile; fileRef = C487896518936D78009D79D5 /* PTColorHistogram.m */; };
 		C487896818936D78009D79D5 /* test_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C487896618936D78009D79D5 /* test_photo.jpg */; };
+		D43F94CA1893A116000C1B51 /* PTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D43F94C91893A116000C1B51 /* PTConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		C487896518936D78009D79D5 /* PTColorHistogram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTColorHistogram.m; sourceTree = "<group>"; };
 		C487896618936D78009D79D5 /* test_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_photo.jpg; sourceTree = "<group>"; };
 		C48789691893777A009D79D5 /* natural_hotpocket.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = natural_hotpocket.jpg; sourceTree = "<group>"; };
+		D43F94C81893A116000C1B51 /* PTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTConstants.h; sourceTree = "<group>"; };
+		D43F94C91893A116000C1B51 /* PTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +146,8 @@
 		23DAACED18933AD30016CE31 /* PitaBread */ = {
 			isa = PBXGroup;
 			children = (
+				D43F94C81893A116000C1B51 /* PTConstants.h */,
+				D43F94C91893A116000C1B51 /* PTConstants.m */,
 				2345490018937D5B00CC674C /* idle.jpg */,
 				C48789691893777A009D79D5 /* natural_hotpocket.jpg */,
 				C487896418936D78009D79D5 /* PTColorHistogram.h */,
@@ -308,6 +313,7 @@
 				23DAACFE18933AD30016CE31 /* PTViewController.m in Sources */,
 				23DAAD2F18936B0B0016CE31 /* PTCritterSprite.m in Sources */,
 				23DAAD231893431A0016CE31 /* PTCritter.m in Sources */,
+				D43F94CA1893A116000C1B51 /* PTConstants.m in Sources */,
 				23DAAD0118933AD30016CE31 /* PTCritterScene.m in Sources */,
 				23DAACF418933AD30016CE31 /* main.m in Sources */,
 			);
