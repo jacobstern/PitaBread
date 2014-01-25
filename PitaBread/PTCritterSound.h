@@ -11,6 +11,8 @@
 
 @interface PTCritterSound : NSObject
 
+@property SystemSoundID mySound;
+
 - (id)init:(NSURL *)soundURL;
 - (void) playSound;
 
