@@ -26,6 +26,7 @@
 		23DAAD1818933AD30016CE31 /* PitaBreadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD1718933AD30016CE31 /* PitaBreadTests.m */; };
 		23DAAD231893431A0016CE31 /* PTCritter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD221893431A0016CE31 /* PTCritter.m */; };
 		23DAAD26189344270016CE31 /* PTClientSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD25189344270016CE31 /* PTClientSingleton.m */; };
+		23DAAD2F18936B0B0016CE31 /* PTCritterSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD2E18936B0B0016CE31 /* PTCritterSprite.m */; };
 		C4878960189351DE009D79D5 /* PTHotPocketDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = C487895F189351DE009D79D5 /* PTHotPocketDetector.m */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,8 @@
 		23DAAD221893431A0016CE31 /* PTCritter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCritter.m; sourceTree = "<group>"; };
 		23DAAD24189344270016CE31 /* PTClientSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTClientSingleton.h; sourceTree = "<group>"; };
 		23DAAD25189344270016CE31 /* PTClientSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTClientSingleton.m; sourceTree = "<group>"; };
+		23DAAD2D18936B0B0016CE31 /* PTCritterSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCritterSprite.h; sourceTree = "<group>"; };
+		23DAAD2E18936B0B0016CE31 /* PTCritterSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCritterSprite.m; sourceTree = "<group>"; };
 		C487895E189351DE009D79D5 /* PTHotPocketDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotPocketDetector.h; sourceTree = "<group>"; };
 		C487895F189351DE009D79D5 /* PTHotPocketDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTHotPocketDetector.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +139,8 @@
 				23DAAD25189344270016CE31 /* PTClientSingleton.m */,
 				23DAAD211893431A0016CE31 /* PTCritter.h */,
 				23DAAD221893431A0016CE31 /* PTCritter.m */,
+				23DAAD2D18936B0B0016CE31 /* PTCritterSprite.h */,
+				23DAAD2E18936B0B0016CE31 /* PTCritterSprite.m */,
 				23DAACF918933AD30016CE31 /* Main.storyboard */,
 				23DAACFC18933AD30016CE31 /* PTViewController.h */,
 				23DAACFD18933AD30016CE31 /* PTViewController.m */,
@@ -282,6 +287,7 @@
 				23DAAD26189344270016CE31 /* PTClientSingleton.m in Sources */,
 				23DAACF818933AD30016CE31 /* PTAppDelegate.m in Sources */,
 				23DAACFE18933AD30016CE31 /* PTViewController.m in Sources */,
+				23DAAD2F18936B0B0016CE31 /* PTCritterSprite.m in Sources */,
 				23DAAD231893431A0016CE31 /* PTCritter.m in Sources */,
 				23DAAD0118933AD30016CE31 /* PTCritterScene.m in Sources */,
 				23DAACF418933AD30016CE31 /* main.m in Sources */,
