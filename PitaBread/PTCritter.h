@@ -25,6 +25,8 @@
 
 @property (nonatomic) bool isDead;
 
+@property NSMutableArray* arrayOfImages;
+
 - (void)feed:(int)pts;
 - (void)sleep:(int)pts;
 - (void)clean:(int)pts;
