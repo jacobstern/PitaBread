@@ -8,17 +8,20 @@
 
 #import "PTClientSingleton.h"
 #import "PTCritterScene.h"
+#import "PTCritterSprite.h"
 #import "PTCritter.h"
 
 @interface PTCritterScene()
 
-@property (nonatomic) SKLabelNode* startPromptLabelNode;
+@property (nonatomic) SKLabelNode *startPromptLabelNode;
+@property (nonatomic) PTCritterSprite *critterSprite;
 
 @end
 
 @implementation PTCritterScene
 
 @synthesize startPromptLabelNode;
+@synthesize critterSprite;
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -32,8 +35,16 @@
         startPromptLabelNode.fontSize = 14;
         startPromptLabelNode.position = CGPointMake(CGRectGetMidX(self.frame),
                                        CGRectGetMidY(self.frame));
-        
         [self addChild:startPromptLabelNode];
+        
+        SKTexture *critterTexture = [SKTexture textureWithImageNamed:@"idle.jpg"];
+        NSAssert(critterTexture != nil, @"Failed to load critterTexture!");
+        critterSprite = [PTCritterSprite spriteWithSpriteSheet:critterTexture];
+        critterSprite.position = CGPointMake(CGRectGetMidX(self.frame),
+                                                    CGRectGetMidY(self.frame));
+        
+        [self addChild:critterSprite];
+        
     }
     return self;
 }
