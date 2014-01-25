@@ -14,6 +14,7 @@
 @interface PTColorHistogram : NSObject
 
 - (id)init:(UIImage *)im;
+- (void)delete;
 
 @property(nonatomic, assign) unsigned char *data;
 @property float *histogram;

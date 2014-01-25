@@ -47,6 +47,12 @@
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:1];
     
+    //Data for the critter we are using
+    self.critterData = [[PTCritter alloc] init];
+    //Critters sleep is 10000
+    self.critterData.sleep = 1000;
+    self.critterData.hunger = 700;
+    
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = .2;
     self.motionManager.gyroUpdateInterval = .2;
@@ -76,7 +82,7 @@
     {
         NSInteger lCurrentWidth = self.view.frame.size.width;
         NSInteger lCurrentHeight = self.view.frame.size.height;
-        NSInteger dimensions = 200;
+        NSInteger dimensions = 240;
         [self.imageOfCritter removeFromSuperview];
         self.imageOfCritter = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth/2-dimensions/2, lCurrentHeight+20, dimensions, dimensions)];
         self.imageOfCritter.image = [[self.currentCritter arrayOfImages] objectAtIndex:self.currentImgIdx];
@@ -140,7 +146,7 @@
 {
     NSInteger lCurrentWidth = self.view.frame.size.width;
     NSInteger lCurrentHeight = self.view.frame.size.height;
-    NSInteger dimensions = 200;
+    NSInteger dimensions = 240;
     [self.imageOfCritter removeFromSuperview];
     self.imageOfCritter = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth/2-dimensions/2, lCurrentHeight/2-dimensions/2, dimensions, dimensions)];
     self.imageOfCritter.image = [[self.currentCritter arrayOfImages] objectAtIndex:self.currentImgIdx];
@@ -154,11 +160,36 @@
     
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    self.critterData.sleep ++;
+    self.critterData.hunger --;
+    
     self.moodCounter --;
-    if(self.moodCounter <= 0 && !self.isEating)
+    NSLog([NSString stringWithFormat:@"Hunger: %i", self.critterData.hunger]);
+    NSLog([NSString stringWithFormat:@"Sleep: %i", self.critterData.sleep]);
+    if(self.moodCounter <= 0 && !self.isEating && self.critterData.sleep > 200 && self.critterData.hunger > 200 && self.critterData.hunger < 1200)
     {
         self.moodCounter = 0;
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:1];
+    }
+    else if(self.critterData.hunger <= 0 && self.moodCounter <= 0 && !self.isEating)
+    {
+        self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:10];
+    }
+    else if(self.critterData.hunger <= 200 && self.moodCounter <= 0 && !self.isEating)
+    {
+        self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:9];
+    }
+    else if(self.critterData.sleep <= 0 && self.moodCounter <= 0 && !self.isEating)
+    {
+        self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:8];
+    }
+    else if(self.critterData.sleep <= 200 && self.moodCounter <= 0 && !self.isEating)
+    {
+        self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:5];
+    }
+    else if(self.critterData.hunger >= 1200 && self.moodCounter <= 0 && !self.isEating)
+    {
+        self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:4];
     }
     
     self.currentImgIdx ++;
@@ -249,6 +280,7 @@
             {
                 NSLog(@"Is HotPocket");
                 self.moodCounter = 10;
+                self.critterData.hunger += 1500;
                 self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:2];
             }
             else
@@ -406,9 +438,19 @@
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     if(!self.isEating)
     {
-        self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:3];
-        self.moodCounter = 10;
-    }}
+        if(self.critterData.sleep <= 200 || self.critterData.hunger <= 200)
+        {
+            self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:7];
+            self.moodCounter = 20;
+        }
+        else
+        {
+            self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:3];
+            self.moodCounter = 10;
+        }
+        self.critterData.sleep = self.critterData.sleep - 20;
+    }
+}
 
 - (NSUInteger)supportedInterfaceOrientations
 {

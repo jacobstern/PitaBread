@@ -19,9 +19,13 @@
     while(!self.doneMaking){
         sleep(2);
     }
-    free(self.data);
     [self normalizeHistogram];
     return self;
+}
+
+- (void)delete {
+    free(self.data);
+    free(self.histogram);
 }
 
 - (unsigned char *)extractPixelData:(UIImage *)im
