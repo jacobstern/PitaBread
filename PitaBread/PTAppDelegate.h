@@ -10,8 +10,9 @@
 
 @interface PTAppDelegate : UIResponder <UIApplicationDelegate>
 
+@property NSMutableArray* arrayOfCritters;
 @property (strong, nonatomic) UIWindow *window;
-@property NSString* imageName;
+@property NSData* imageData;
 @property BOOL pictureTaken;
 
 @end
