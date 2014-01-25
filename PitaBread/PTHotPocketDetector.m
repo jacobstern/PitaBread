@@ -24,11 +24,20 @@
 - (bool)isHotPocket:(UIImage*)im {
     PTColorHistogram* hist = [[PTColorHistogram alloc] init:im];
     float total_red = 0;
+    float total_green = 0;
+    float total_blue = 0;
     for (int i=3*16; i<4*16; i++) {
         total_red += hist.histogram[i];
     }
+//    total_red = hist.histogram[(4*16)-1];
+//    for (int i=3*8;i<4*8;i++) {
+//        total_green += hist.histogram[i];
+//    }
+//    for (int i=16;i<2*16;i++) {
+//        total_blue += hist.histogram[i];
+//    }
     NSLog(@"red percent: %f\n", total_red);
-    if (total_red > .35) {
+    if (total_red > .25) {
         return true;
     }
     return false;
