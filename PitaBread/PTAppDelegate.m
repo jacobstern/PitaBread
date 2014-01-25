@@ -17,16 +17,26 @@
     
     PTCritter* eatingCritter = [[PTCritter alloc] init];
     eatingCritter.arrayOfImages = [[NSMutableArray alloc] init];
-    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating1.png"]];
-    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating2.png"]];
-    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating3.png"]];
-    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating4.png"]];
-    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating5.png"]];
-    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating6.png"]];
-    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating7.png"]];
-    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating8.png"]];
-    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating9.png"]];
-    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating10.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0001.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0002.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0003.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0004.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0005.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0006.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0007.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0008.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0009.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0010.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0011.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0012.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0013.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0014.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0015.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0016.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0017.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0018.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0019.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating_0020.png"]];
     
     [self.arrayOfCritters addObject:eatingCritter];
     
@@ -45,25 +55,52 @@
     
     PTCritter* happyCritter = [[PTCritter alloc] init];
     happyCritter.arrayOfImages = [[NSMutableArray alloc] init];
-    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy1.png"]];
-    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy2.png"]];
-    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy3.png"]];
-    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy4.png"]];
-    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy5.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0001.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0002.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0003.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0004.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0005.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0006.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0007.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0008.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0009.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0010.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0011.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0012.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0013.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0014.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0015.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0016.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0017.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0018.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0019.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_0020.png"]];
     
     [self.arrayOfCritters addObject:happyCritter];
     
     
     PTCritter* madCritter = [[PTCritter alloc] init];
     madCritter.arrayOfImages = [[NSMutableArray alloc] init];
-    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad1.png"]];
-    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad2.png"]];
-    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad3.png"]];
-    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad4.png"]];
-    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad5.png"]];
-    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad6.png"]];
-    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad7.png"]];
-    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad8.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0001.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0002.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0003.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0004.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0005.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0006.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0007.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0008.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0009.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0010.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0011.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0012.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0013.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0014.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0015.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0016.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0017.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0018.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0019.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0020.png"]];
     
     [self.arrayOfCritters addObject:madCritter];
     // Override point for customization after application launch.
