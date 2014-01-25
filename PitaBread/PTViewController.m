@@ -36,7 +36,10 @@
     
     
     self.isInitialLoad = TRUE;
+    self.isHatching = FALSE;
+    self.hatchingCounter = 0;
     self.critterBeingBorn = FALSE;
+    self.imageOfEgg = [[UIImageView alloc] init];
     
     NSRunLoop *runloop = [NSRunLoop currentRunLoop];
     NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(updateImgIdx) userInfo:nil repeats:YES];
@@ -72,9 +75,14 @@
                                         [self outputRotationData:gyroData.rotationRate];
                                     }];
     
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(critterBorn)];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(startHatching)];
     singleTap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:singleTap];
+}
+
+- (void)startHatching
+{
+    self.isHatching = TRUE;
 }
 
 - (void)critterBorn
@@ -95,12 +103,38 @@
                      }
                      completion:^(BOOL finished) {
                          if (finished) {
+                             PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
+                             [[[appDelegate arrayOfMusic] objectAtIndex:3] playSound];
                              self.isInitialLoad = FALSE;
                          }
                      }];
     }
     self.critterBeingBorn = TRUE;
 }
+
+- (void)drawTheEgg
+{
+    PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    NSInteger lCurrentWidth = self.view.frame.size.width;
+    NSInteger lCurrentHeight = self.view.frame.size.height;
+    NSInteger dimensions = 330;
+    [self.imageOfEgg removeFromSuperview];
+    if(self.hatchingCounter < 20)
+    {
+        self.imageOfEgg = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth/2-dimensions/2, lCurrentHeight-dimensions/2-40, dimensions, dimensions)];
+        self.imageOfEgg.image = [[[[appDelegate arrayOfCritters] objectAtIndex:11] arrayOfImages] objectAtIndex:self.hatchingCounter];
+        [[self view] addSubview:self.imageOfEgg];
+        
+        if(self.hatchingCounter == 8)
+            [self critterBorn];
+    }
+    else
+    {
+        self.isHatching = FALSE;
+    }
+}
+
 
 - (void)prepareThePicker
 {
@@ -161,6 +195,9 @@
 
 - (void)updateImgIdx
 {
+    [self.backgroundView nextFrame];
+    [self.backgroundView setNeedsDisplay];
+    
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.critterData.sleep ++;
@@ -176,13 +213,18 @@
     }
     else if(self.critterData.hunger <= 0 && self.moodCounter <= 0 && !self.isEating)
     {
+        if (self.currentCritter != [[appDelegate arrayOfCritters] objectAtIndex:10]) {
+            [[[appDelegate arrayOfMusic] objectAtIndex:0] playSound];
+        }
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:10];
-         [[[appDelegate arrayOfMusic] objectAtIndex:0] playSound];
+
     }
     else if(self.critterData.hunger <= 200 && self.moodCounter <= 0 && !self.isEating)
     {
+        if (self.currentCritter != [[appDelegate arrayOfCritters] objectAtIndex:9]) {
+            [[[appDelegate arrayOfMusic] objectAtIndex:0] playSound];
+        }
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:9];
-         [[[appDelegate arrayOfMusic] objectAtIndex:0] playSound];
     }
     else if(self.critterData.sleep <= 0 && self.moodCounter <= 0 && !self.isEating)
     {
@@ -208,6 +250,15 @@
         [self checkPictureTaken];
         [self drawTheCritter];
         [self drawCameraCircle];
+    }
+    else
+    {
+        [self drawTheEgg];
+    }
+    
+    if(self.isHatching)
+    {
+        self.hatchingCounter ++;
     }
 }
 
@@ -270,11 +321,12 @@
     if([appDelegate pictureTaken])
     {
         self.isEating = TRUE;
-
-        PTHotPocketDetector* hotPocketDetector = [[PTHotPocketDetector alloc] init];
-        appDelegate.pictureTaken = FALSE;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
                                                  (unsigned long)NULL), ^(void) {
+            
+            PTHotPocketDetector* hotPocketDetector = [[PTHotPocketDetector alloc] init];
+            appDelegate.pictureTaken = FALSE;
             
             NSData *imageData = [appDelegate imageData];
             
@@ -283,13 +335,16 @@
             
             if([hotPocketDetector isHotPocket:pictureView.image])
             {
+                sleep(3);
                 NSLog(@"Is HotPocket");
                 self.moodCounter = 10;
                 self.critterData.hunger += 1500;
                 self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:2];
+                [[[appDelegate arrayOfMusic] objectAtIndex:2] playSound];
             }
             else
             {
+                sleep(3);
                 NSLog(@"Not HotPocket");
                 self.moodCounter = 10;
                 self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:3];
@@ -333,8 +388,8 @@
 -(void)screenSwiped
 {
     self.isEating = FALSE;
-    [self.picker dismissViewControllerAnimated:YES completion:NULL];
     [self.picker removeFromParentViewController];
+    [self.picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 
@@ -378,15 +433,15 @@
 
 - (void)pictureButtonTapped
 {
-    [self.picker takePicture];
     [self.picker removeFromParentViewController];
+    [self.picker takePicture];
 }
 
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
                                              (unsigned long)NULL), ^(void) {
         UIImage *anImage = [info valueForKey:UIImagePickerControllerOriginalImage];
 
