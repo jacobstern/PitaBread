@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2345490118937D5B00CC674C /* idle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2345490018937D5B00CC674C /* idle.jpg */; };
 		23DAACE618933AD30016CE31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAACE518933AD30016CE31 /* Foundation.framework */; };
 		23DAACE818933AD30016CE31 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAACE718933AD30016CE31 /* CoreGraphics.framework */; };
 		23DAACEA18933AD30016CE31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAACE918933AD30016CE31 /* UIKit.framework */; };
@@ -27,10 +28,10 @@
 		23DAAD231893431A0016CE31 /* PTCritter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD221893431A0016CE31 /* PTCritter.m */; };
 		23DAAD26189344270016CE31 /* PTClientSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD25189344270016CE31 /* PTClientSingleton.m */; };
 		23DAAD2F18936B0B0016CE31 /* PTCritterSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD2E18936B0B0016CE31 /* PTCritterSprite.m */; };
+		23DAAD31189370B30016CE31 /* idle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23DAAD30189370B30016CE31 /* idle.jpg */; };
 		C4878960189351DE009D79D5 /* PTHotPocketDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = C487895F189351DE009D79D5 /* PTHotPocketDetector.m */; };
 		C487896718936D78009D79D5 /* PTColorHistogram.m in Sources */ = {isa = PBXBuildFile; fileRef = C487896518936D78009D79D5 /* PTColorHistogram.m */; };
 		C487896818936D78009D79D5 /* test_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C487896618936D78009D79D5 /* test_photo.jpg */; };
-		C487896A1893777A009D79D5 /* natural_hotpocket.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C48789691893777A009D79D5 /* natural_hotpocket.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2345490018937D5B00CC674C /* idle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = idle.jpg; sourceTree = SOURCE_ROOT; };
 		23DAACE218933AD30016CE31 /* PitaBread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PitaBread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23DAACE518933AD30016CE31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		23DAACE718933AD30016CE31 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -73,6 +75,7 @@
 		23DAAD25189344270016CE31 /* PTClientSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTClientSingleton.m; sourceTree = "<group>"; };
 		23DAAD2D18936B0B0016CE31 /* PTCritterSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCritterSprite.h; sourceTree = "<group>"; };
 		23DAAD2E18936B0B0016CE31 /* PTCritterSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCritterSprite.m; sourceTree = "<group>"; };
+		23DAAD30189370B30016CE31 /* idle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = idle.jpg; sourceTree = "<group>"; };
 		C487895E189351DE009D79D5 /* PTHotPocketDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotPocketDetector.h; sourceTree = "<group>"; };
 		C487895F189351DE009D79D5 /* PTHotPocketDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTHotPocketDetector.m; sourceTree = "<group>"; };
 		C487896418936D78009D79D5 /* PTColorHistogram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTColorHistogram.h; sourceTree = "<group>"; };
@@ -140,6 +143,7 @@
 		23DAACED18933AD30016CE31 /* PitaBread */ = {
 			isa = PBXGroup;
 			children = (
+				2345490018937D5B00CC674C /* idle.jpg */,
 				C48789691893777A009D79D5 /* natural_hotpocket.jpg */,
 				C487896418936D78009D79D5 /* PTColorHistogram.h */,
 				C487896518936D78009D79D5 /* PTColorHistogram.m */,
@@ -273,10 +277,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				23DAACF218933AD30016CE31 /* InfoPlist.strings in Resources */,
-				C487896A1893777A009D79D5 /* natural_hotpocket.jpg in Resources */,
+				23DAAD31189370B30016CE31 /* idle.jpg in Resources */,
 				23DAAD0518933AD30016CE31 /* Images.xcassets in Resources */,
 				23DAAD0318933AD30016CE31 /* Spaceship.png in Resources */,
 				C487896818936D78009D79D5 /* test_photo.jpg in Resources */,
+				2345490118937D5B00CC674C /* idle.jpg in Resources */,
 				23DAACFB18933AD30016CE31 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
