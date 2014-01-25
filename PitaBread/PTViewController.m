@@ -8,12 +8,9 @@
 
 #import "PTViewController.h"
 #import "PTCritterScene.h"
-<<<<<<< HEAD
 #import "PTAppDelegate.h"
-=======
 #import "PTColorHistogram.h"
 #import "PTHotPocketDetector.h"
->>>>>>> 4b58f96e55ff5b3659021e39dd109738042170d4
 
 @implementation PTViewController
 
