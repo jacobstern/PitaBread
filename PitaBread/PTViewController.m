@@ -114,6 +114,14 @@
         }
     }];
     
+  	self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
+    
+  	if (self.recorder) {
+  		[self.recorder prepareToRecord];
+  		self.recorder.meteringEnabled = YES;
+  		[self.recorder record];
+  	} else
+  		NSLog([error description]);
     UIImage *splashImageSource = [UIImage imageNamed:@"logo_cropped.png"];
     self.splashImage = [[UIImageView alloc] initWithImage:splashImageSource];
     self.splashImage.frame = CGRectMake(0, 50, lCurrentWidth, .433 * lCurrentWidth);
@@ -167,18 +175,28 @@
     NSInteger lCurrentWidth = self.view.frame.size.width;
     NSInteger lCurrentHeight = self.view.frame.size.height;
     NSInteger dimensions = 330;
-    [self.imageOfEgg removeFromSuperview];
     if(self.hatchingCounter < 20)
     {
+        [self.imageOfEgg removeFromSuperview];
         self.imageOfEgg = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth/2-dimensions/2, lCurrentHeight-dimensions/2-40, dimensions, dimensions)];
         self.imageOfEgg.image = [[[[appDelegate arrayOfCritters] objectAtIndex:11] arrayOfImages] objectAtIndex:self.hatchingCounter];
-        [[self view] addSubview:self.imageOfEgg];
+        [self.view addSubview:self.imageOfEgg];
         
-        if(self.hatchingCounter == 8)
+        if(self.hatchingCounter == 8) {
             [self critterBorn];
+        }
     }
     else
     {
+        if (self.isHatching) {
+            [UIView animateWithDuration:0.3 delay:0.0 options:0 animations:^{
+                // Animate the alpha value of your imageView from 1.0 to 0.0 here
+                self.imageOfEgg.alpha = 0.0f;
+            } completion:^(BOOL finished) {
+                // Once the animation is completed and the alpha has gone to 0.0, hide the view for good
+                self.imageOfEgg.hidden = YES;
+            }];
+        }
         self.isHatching = FALSE;
     }
 }
