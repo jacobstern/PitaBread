@@ -99,7 +99,10 @@
   		[self.recorder record];
   	} else
   		NSLog([error description]);
-    [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    [session setActive:YES error:nil];
+    [session requestRecordPermission:^(BOOL granted) {
         if (granted) {
             // Microphone enabled code
             NSLog(@"mic enabled");
