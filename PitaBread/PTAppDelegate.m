@@ -18,8 +18,9 @@
     self.arrayOfMusic = [[NSMutableArray alloc] init];
     
     //0: angry
-    NSURL *url = [NSURL fileURLWithPath:
-                    [[NSBundle mainBundle] pathForResource:@"angry" ofType:@"wav"  inDirectory:@"music" ]];
+    //NSURL *url = [NSURL fileURLWithPath:
+    //                [[NSBundle mainBundle] pathForResource:@"angry" ofType:@"wav"  inDirectory:@"PitaBread/music" ]];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"angry" withExtension:@".wav"];
     PTCritterSound* angrySound = [[PTCritterSound alloc] init:url];
     [self.arrayOfMusic addObject:angrySound];
     
