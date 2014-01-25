@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Team Name Optional. All rights reserved.
 //
 
-#import "PTClientSingleton.h"
 #import "PTCritterScene.h"
 #import "PTHotPocketDetector.h"
 #import "PTCritterSprite.h"
