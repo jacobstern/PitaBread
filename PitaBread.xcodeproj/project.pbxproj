@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		231350E718940B7200178915 /* PTBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 231350E618940B7200178915 /* PTBackgroundView.m */; };
+		231350EC18942C4900178915 /* speech_FU.png in Resources */ = {isa = PBXBuildFile; fileRef = 231350E918942C4900178915 /* speech_FU.png */; };
+		231350ED18942C4900178915 /* speech_hot.png in Resources */ = {isa = PBXBuildFile; fileRef = 231350EA18942C4900178915 /* speech_hot.png */; };
+		231350EE18942C4900178915 /* speech_ZZZ.png in Resources */ = {isa = PBXBuildFile; fileRef = 231350EB18942C4900178915 /* speech_ZZZ.png */; };
 		2345490118937D5B00CC674C /* idle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2345490018937D5B00CC674C /* idle.jpg */; };
 		23DAACE618933AD30016CE31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAACE518933AD30016CE31 /* Foundation.framework */; };
 		23DAACE818933AD30016CE31 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAACE718933AD30016CE31 /* CoreGraphics.framework */; };
@@ -398,6 +401,9 @@
 /* Begin PBXFileReference section */
 		231350E518940B7200178915 /* PTBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBackgroundView.h; sourceTree = "<group>"; };
 		231350E618940B7200178915 /* PTBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBackgroundView.m; sourceTree = "<group>"; };
+		231350E918942C4900178915 /* speech_FU.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speech_FU.png; path = images/speech_FU.png; sourceTree = "<group>"; };
+		231350EA18942C4900178915 /* speech_hot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speech_hot.png; path = images/speech_hot.png; sourceTree = "<group>"; };
+		231350EB18942C4900178915 /* speech_ZZZ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speech_ZZZ.png; path = images/speech_ZZZ.png; sourceTree = "<group>"; };
 		2345490018937D5B00CC674C /* idle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = idle.jpg; sourceTree = SOURCE_ROOT; };
 		23DAACE218933AD30016CE31 /* PitaBread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PitaBread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23DAACE518933AD30016CE31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -811,6 +817,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		231350E818942BF100178915 /* speech */ = {
+			isa = PBXGroup;
+			children = (
+				231350E918942C4900178915 /* speech_FU.png */,
+				231350EA18942C4900178915 /* speech_hot.png */,
+				231350EB18942C4900178915 /* speech_ZZZ.png */,
+			);
+			name = speech;
+			sourceTree = "<group>";
+		};
 		23DAACD918933AD30016CE31 = {
 			isa = PBXGroup;
 			children = (
@@ -873,6 +889,7 @@
 				C487895E189351DE009D79D5 /* PTHotPocketDetector.h */,
 				C487895F189351DE009D79D5 /* PTHotPocketDetector.m */,
 				F14246D11893D6AE002033BD /* bowl.png */,
+				231350E818942BF100178915 /* speech */,
 				F191EDBE1894029500DF33B5 /* sprites */,
 			);
 			path = PitaBread;
@@ -1561,6 +1578,7 @@
 				F191EFA11894029500DF33B5 /* mad_0008.png in Resources */,
 				F191EF4E1894029500DF33B5 /* happy_0005.png in Resources */,
 				F191F00C1894029500DF33B5 /* sleepy_0015.png in Resources */,
+				231350ED18942C4900178915 /* speech_hot.png in Resources */,
 				F191EFAE1894029500DF33B5 /* mad_very_0001.png in Resources */,
 				F191EF401894029500DF33B5 /* full_very_0011.png in Resources */,
 				F191EFA91894029500DF33B5 /* mad_0016.png in Resources */,
@@ -1571,6 +1589,7 @@
 				F191F0051894029500DF33B5 /* sleepy_0008.png in Resources */,
 				F191EFA61894029500DF33B5 /* mad_0013.png in Resources */,
 				F191EFB81894029500DF33B5 /* mad_very_0011.png in Resources */,
+				231350EC18942C4900178915 /* speech_FU.png in Resources */,
 				F191F0261894029500DF33B5 /* smelly_0001.png in Resources */,
 				F14246D21893D6AE002033BD /* bowl.png in Resources */,
 				F191EF851894029500DF33B5 /* hungry_0020.png in Resources */,
@@ -1781,6 +1800,7 @@
 				F191EF6B1894029500DF33B5 /* happy_very_0014.png in Resources */,
 				C487898718942329009D79D5 /* hungry.wav in Resources */,
 				F191EF861894029500DF33B5 /* hungry_very_0001.png in Resources */,
+				231350EE18942C4900178915 /* speech_ZZZ.png in Resources */,
 				F191EFC21894029500DF33B5 /* mad_very_0021.png in Resources */,
 				F191EF6A1894029500DF33B5 /* happy_very_0013.png in Resources */,
 				F191F03A1894029500DF33B5 /* smelly_very_0001.png in Resources */,

@@ -24,7 +24,7 @@ PTBackgroundCircle GenerateCircle(CGFloat xMin, CGFloat xMax, CGFloat y)
     PTBackgroundCircle circle = {
         .x = xMin + ((xMax + 60.0 - xMin) * (rand() / (float)RAND_MAX)),
         .y = y, .size = size, .velocity = velocity,
-        .r = 0.94, .g = green, .b = 1.00, .a = 1.0
+        .r = 0.94, .g = green, .b = 1.00, .a = 0.99
     };
     
     return circle;
@@ -41,7 +41,7 @@ PTBackgroundCircle GenerateCircle(CGFloat xMin, CGFloat xMax, CGFloat y)
 {
     self.circles = [[NSMutableArray alloc] init];
     for (int i = 0; i < kCirclesCount; i++) {
-        PTBackgroundCircle circle = GenerateCircle(0, self.bounds.size.width, self.bounds.size.height * (float)i / kCirclesCount);
+        PTBackgroundCircle circle = GenerateCircle(0, self.bounds.size.width, self.bounds.size.height * (float)(i + 1) / kCirclesCount);
         id value = [NSValue valueWithBytes:&circle objCType:@encode(PTBackgroundCircle)];
         [self.circles addObject:value];
     }
@@ -77,11 +77,10 @@ PTBackgroundCircle GenerateCircle(CGFloat xMin, CGFloat xMax, CGFloat y)
        NSValue *value = [self.circles objectAtIndex:i];
        PTBackgroundCircle circle;
        [value getValue:&circle];
-       if (circle.y + circle.size > self.bounds.size.height) {
+       if (circle.y - circle.size > self.bounds.size.height) {
            circle = GenerateCircle(0.0, self.bounds.size.width, -30.0);
-       } else {
-           circle.y = circle.y + circle.velocity;
        }
+       circle.y = circle.y + circle.velocity;
        value = [NSValue valueWithBytes:&circle objCType:@encode(PTBackgroundCircle)];
        self.circles[i] = value;
    }
