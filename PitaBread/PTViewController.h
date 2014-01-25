@@ -18,6 +18,7 @@
 @property (strong, nonatomic) CMMotionManager *motionManager;
 
 @property PTCritter* currentCritter;
+@property PTCritter* critterData;
 
 @property UIImageView* bowlImage;
 @property UIImageView* foodImage;
