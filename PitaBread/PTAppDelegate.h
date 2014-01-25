@@ -11,6 +11,7 @@
 @interface PTAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property NSMutableArray* arrayOfCritters;
+@property NSMutableArray* arrayOfMusic;
 @property (strong, nonatomic) UIWindow *window;
 @property NSData* imageData;
 @property BOOL pictureTaken;

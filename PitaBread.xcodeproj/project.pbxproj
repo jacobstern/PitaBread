@@ -28,7 +28,16 @@
 		C4878960189351DE009D79D5 /* PTHotPocketDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = C487895F189351DE009D79D5 /* PTHotPocketDetector.m */; };
 		C487896718936D78009D79D5 /* PTColorHistogram.m in Sources */ = {isa = PBXBuildFile; fileRef = C487896518936D78009D79D5 /* PTColorHistogram.m */; };
 		C487896818936D78009D79D5 /* test_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C487896618936D78009D79D5 /* test_photo.jpg */; };
+		C487898418942329009D79D5 /* angry.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487897C18942329009D79D5 /* angry.wav */; };
+		C487898518942329009D79D5 /* happy.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487897D18942329009D79D5 /* happy.wav */; };
+		C487898618942329009D79D5 /* Hot Pockets.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487897E18942329009D79D5 /* Hot Pockets.wav */; };
+		C487898718942329009D79D5 /* hungry.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487897F18942329009D79D5 /* hungry.wav */; };
+		C487898818942329009D79D5 /* sad.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487898018942329009D79D5 /* sad.wav */; };
+		C487898918942329009D79D5 /* sleepy.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487898118942329009D79D5 /* sleepy.wav */; };
+		C487898A18942329009D79D5 /* smelly.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487898218942329009D79D5 /* smelly.wav */; };
+		C487898B18942329009D79D5 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487898318942329009D79D5 /* start.wav */; };
 		D43F94CA1893A116000C1B51 /* PTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D43F94C91893A116000C1B51 /* PTConstants.m */; };
+		D43F94D518941864000C1B51 /* PTCritterSound.m in Sources */ = {isa = PBXBuildFile; fileRef = D43F94D418941864000C1B51 /* PTCritterSound.m */; };
 		F12630271893B183008D8989 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = F12630261893B183008D8989 /* camera.png */; };
 		F12630291893BF20008D8989 /* bowl.png in Resources */ = {isa = PBXBuildFile; fileRef = F12630281893BF20008D8989 /* bowl.png */; };
 		F126302B1893BF28008D8989 /* sprite_eating.png in Resources */ = {isa = PBXBuildFile; fileRef = F126302A1893BF28008D8989 /* sprite_eating.png */; };
@@ -416,8 +425,18 @@
 		C487896518936D78009D79D5 /* PTColorHistogram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTColorHistogram.m; sourceTree = "<group>"; };
 		C487896618936D78009D79D5 /* test_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_photo.jpg; sourceTree = "<group>"; };
 		C48789691893777A009D79D5 /* natural_hotpocket.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = natural_hotpocket.jpg; sourceTree = "<group>"; };
+		C487897C18942329009D79D5 /* angry.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = angry.wav; path = music/angry.wav; sourceTree = "<group>"; };
+		C487897D18942329009D79D5 /* happy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = happy.wav; sourceTree = "<group>"; };
+		C487897E18942329009D79D5 /* Hot Pockets.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Hot Pockets.wav"; sourceTree = "<group>"; };
+		C487897F18942329009D79D5 /* hungry.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hungry.wav; sourceTree = "<group>"; };
+		C487898018942329009D79D5 /* sad.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sad.wav; sourceTree = "<group>"; };
+		C487898118942329009D79D5 /* sleepy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sleepy.wav; sourceTree = "<group>"; };
+		C487898218942329009D79D5 /* smelly.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = smelly.wav; sourceTree = "<group>"; };
+		C487898318942329009D79D5 /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = start.wav; sourceTree = "<group>"; };
 		D43F94C81893A116000C1B51 /* PTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTConstants.h; sourceTree = "<group>"; };
 		D43F94C91893A116000C1B51 /* PTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTConstants.m; sourceTree = "<group>"; };
+		D43F94D318941864000C1B51 /* PTCritterSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCritterSound.h; sourceTree = "<group>"; };
+		D43F94D418941864000C1B51 /* PTCritterSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCritterSound.m; sourceTree = "<group>"; };
 		F12630261893B183008D8989 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera.png; path = images/camera.png; sourceTree = "<group>"; };
 		F12630281893BF20008D8989 /* bowl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bowl.png; path = images/bowl.png; sourceTree = "<group>"; };
 		F126302A1893BF28008D8989 /* sprite_eating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sprite_eating.png; path = images/sprite_eating.png; sourceTree = "<group>"; };
@@ -823,6 +842,10 @@
 		23DAACED18933AD30016CE31 /* PitaBread */ = {
 			isa = PBXGroup;
 			children = (
+				C487897C18942329009D79D5 /* angry.wav */,
+				C487897B18942329009D79D5 /* music */,
+				D43F94D318941864000C1B51 /* PTCritterSound.h */,
+				D43F94D418941864000C1B51 /* PTCritterSound.m */,
 				D43F94C81893A116000C1B51 /* PTConstants.h */,
 				D43F94C91893A116000C1B51 /* PTConstants.m */,
 				2345490018937D5B00CC674C /* idle.jpg */,
@@ -877,6 +900,20 @@
 				23DAAD1418933AD30016CE31 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C487897B18942329009D79D5 /* music */ = {
+			isa = PBXGroup;
+			children = (
+				C487897D18942329009D79D5 /* happy.wav */,
+				C487897E18942329009D79D5 /* Hot Pockets.wav */,
+				C487897F18942329009D79D5 /* hungry.wav */,
+				C487898018942329009D79D5 /* sad.wav */,
+				C487898118942329009D79D5 /* sleepy.wav */,
+				C487898218942329009D79D5 /* smelly.wav */,
+				C487898318942329009D79D5 /* start.wav */,
+			);
+			path = music;
 			sourceTree = "<group>";
 		};
 		F191EDBE1894029500DF33B5 /* sprites */ = {
@@ -1571,6 +1608,7 @@
 				F191F0001894029500DF33B5 /* sleepy_0003.png in Resources */,
 				F191EF211894029500DF33B5 /* eating_0020.png in Resources */,
 				F191EF281894029500DF33B5 /* full_0007.png in Resources */,
+				C487898A18942329009D79D5 /* smelly.wav in Resources */,
 				F191EFAB1894029500DF33B5 /* mad_0018.png in Resources */,
 				F191F06F189404C300DF33B5 /* normal_0013.png in Resources */,
 				F191EFE41894029500DF33B5 /* sad_0015.png in Resources */,
@@ -1582,6 +1620,8 @@
 				F191EF511894029500DF33B5 /* happy_0008.png in Resources */,
 				F191F02E1894029500DF33B5 /* smelly_0009.png in Resources */,
 				F191EFF91894029500DF33B5 /* sad_very_0016.png in Resources */,
+				C487898618942329009D79D5 /* Hot Pockets.wav in Resources */,
+				C487898818942329009D79D5 /* sad.wav in Resources */,
 				F191F02A1894029500DF33B5 /* smelly_0005.png in Resources */,
 				F191EFBF1894029500DF33B5 /* mad_very_0018.png in Resources */,
 				F191EF8F1894029500DF33B5 /* hungry_very_0010.png in Resources */,
@@ -1632,6 +1672,7 @@
 				F191F03C1894029500DF33B5 /* smelly_very_0003.png in Resources */,
 				F191F0341894029500DF33B5 /* smelly_0015.png in Resources */,
 				F191EF601894029500DF33B5 /* happy_very_0003.png in Resources */,
+				C487898518942329009D79D5 /* happy.wav in Resources */,
 				F191EF4F1894029500DF33B5 /* happy_0006.png in Resources */,
 				F191EF271894029500DF33B5 /* full_0006.png in Resources */,
 				F191EFA41894029500DF33B5 /* mad_0011.png in Resources */,
@@ -1730,6 +1771,7 @@
 				F191EFA81894029500DF33B5 /* mad_0015.png in Resources */,
 				F191F0441894029500DF33B5 /* smelly_very_0011.png in Resources */,
 				F191EF6B1894029500DF33B5 /* happy_very_0014.png in Resources */,
+				C487898718942329009D79D5 /* hungry.wav in Resources */,
 				F191EF861894029500DF33B5 /* hungry_very_0001.png in Resources */,
 				F191EFC21894029500DF33B5 /* mad_very_0021.png in Resources */,
 				F191EF6A1894029500DF33B5 /* happy_very_0013.png in Resources */,
@@ -1750,6 +1792,7 @@
 				F191EF711894029500DF33B5 /* happy_very_0020.png in Resources */,
 				F191EF221894029500DF33B5 /* full_0001.png in Resources */,
 				F191EF141894029500DF33B5 /* eating_0007.png in Resources */,
+				C487898418942329009D79D5 /* angry.wav in Resources */,
 				F191F00A1894029500DF33B5 /* sleepy_0013.png in Resources */,
 				F191EFF41894029500DF33B5 /* sad_very_0011.png in Resources */,
 				F191F0231894029500DF33B5 /* sleepy_very_0018.png in Resources */,
@@ -1764,6 +1807,7 @@
 				F191F069189404C300DF33B5 /* normal_0007.png in Resources */,
 				F191EF331894029500DF33B5 /* full_0018.png in Resources */,
 				F191EF3B1894029500DF33B5 /* full_very_0006.png in Resources */,
+				C487898918942329009D79D5 /* sleepy.wav in Resources */,
 				F191EF651894029500DF33B5 /* happy_very_0008.png in Resources */,
 				F191F0371894029500DF33B5 /* smelly_0018.png in Resources */,
 				F191EFDA1894029500DF33B5 /* sad_0005.png in Resources */,
@@ -1775,6 +1819,7 @@
 				F191EFB11894029500DF33B5 /* mad_very_0004.png in Resources */,
 				F191EF391894029500DF33B5 /* full_very_0004.png in Resources */,
 				F191EF561894029500DF33B5 /* happy_0013.png in Resources */,
+				C487898B18942329009D79D5 /* start.wav in Resources */,
 				F12630291893BF20008D8989 /* bowl.png in Resources */,
 				F191EF5A1894029500DF33B5 /* happy_0017.png in Resources */,
 				F191EF1B1894029500DF33B5 /* eating_0014.png in Resources */,
@@ -1806,6 +1851,7 @@
 				C487896718936D78009D79D5 /* PTColorHistogram.m in Sources */,
 				23DAACFE18933AD30016CE31 /* PTViewController.m in Sources */,
 				23DAAD231893431A0016CE31 /* PTCritter.m in Sources */,
+				D43F94D518941864000C1B51 /* PTCritterSound.m in Sources */,
 				D43F94CA1893A116000C1B51 /* PTConstants.m in Sources */,
 				23DAACF418933AD30016CE31 /* main.m in Sources */,
 			);

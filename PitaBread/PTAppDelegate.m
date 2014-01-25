@@ -8,12 +8,21 @@
 
 #import "PTAppDelegate.h"
 #import "PTCritter.h"
+#import "PTCritterSound.h"
 
 @implementation PTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.arrayOfCritters = [[NSMutableArray alloc] init];
+    self.arrayOfMusic = [[NSMutableArray alloc] init];
+    
+    //0: angry
+    //NSURL *url = [NSURL fileURLWithPath:
+    //                [[NSBundle mainBundle] pathForResource:@"angry" ofType:@"wav"  inDirectory:@"PitaBread/music" ]];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"angry" withExtension:@".wav"];
+    PTCritterSound* angrySound = [[PTCritterSound alloc] init:url];
+    [self.arrayOfMusic addObject:angrySound];
     
     //0: eating 1: normal 2:happy 3: mad 4: full 5: sleepy 6: sad 7: mad_very 8: sleepy_very 9: hungry 10: hungry_very
     
