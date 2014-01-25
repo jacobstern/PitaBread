@@ -100,19 +100,19 @@
     
   	NSError *error;
     
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-    [session setActive:YES error:nil];
-    [session requestRecordPermission:^(BOOL granted) {
-        if (granted) {
-            // Microphone enabled code
-            NSLog(@"mic enabled");
-        }
-        else {
-            // Microphone disabled code
-            NSLog(@"mic disabled");
-        }
-    }];
+//    AVAudioSession *session = [AVAudioSession sharedInstance];
+//    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+//    [session setActive:YES error:nil];
+//    [session requestRecordPermission:^(BOOL granted) {
+//        if (granted) {
+//            // Microphone enabled code
+//            NSLog(@"mic enabled");
+//        }
+//        else {
+//            // Microphone disabled code
+//            NSLog(@"mic disabled");
+//        }
+//    }];
     
   	self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
     
