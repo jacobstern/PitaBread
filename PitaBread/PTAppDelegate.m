@@ -29,7 +29,7 @@
     url = [[NSBundle mainBundle] URLForResource:@"gameover" withExtension:@".wav"];
     [self.arrayOfMusic addObject:[[PTCritterSound alloc] init:url]];
     
-    //0: eating 1: normal 2:happy 3: mad 4: full 5: sleepy 6: sad 7: mad_very 8: sleepy_very 9: hungry 10: hungry_very 11: Egg 12: Dying
+    //0: eating 1: normal 2:happy 3: mad 4: full 5: sleepy 6: sad 7: mad_very 8: sleepy_very 9: hungry 10: hungry_very 11: Egg 12: Dying 13: happy very
     
     PTCritter* eatingCritter = [[PTCritter alloc] init];
     eatingCritter.arrayOfImages = [[NSMutableArray alloc] init];
@@ -384,6 +384,32 @@
     [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0040.png"]];
     
     [self.arrayOfCritters addObject:dyingCritter];
+    
+    
+    PTCritter* happy_veryCritter = [[PTCritter alloc] init];
+    happy_veryCritter.arrayOfImages = [[NSMutableArray alloc] init];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0001.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0002.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0003.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0004.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0005.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0006.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0007.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0008.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0009.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0010.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0011.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0012.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0013.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0014.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0015.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0016.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0017.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0018.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0019.png"]];
+    [[happy_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy_very_0020.png"]];
+    
+    [self.arrayOfCritters addObject:happy_veryCritter];
     // Override point for customization after application launch.
     return YES;
 }
