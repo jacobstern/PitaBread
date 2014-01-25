@@ -18,7 +18,7 @@
 
 static const NSString *kAnimationKey = @"Animation";
 
-+ (PTCritterSprite *)spriteWithSpriteSheet:(SKTexture *)theSpriteSheet
++ (PTCritterSprite *)spriteWithSpriteSheetIdle:(SKTexture *)theSpriteSheet
 {
     PTCritterSprite *theSprite = [[PTCritterSprite alloc] init];
     NSMutableArray *spriteTextures = [[NSMutableArray alloc] init];
@@ -31,6 +31,34 @@ static const NSString *kAnimationKey = @"Animation";
             currentTexture = [SKTexture textureWithRect:textureRect inTexture:theSpriteSheet];
             
             [spriteTextures addObject:currentTexture];
+        }
+    }
+    
+    theSprite.size = CGSizeApplyAffineTransform(theSpriteSheet.size, CGAffineTransformMakeScale(1.0f / spriteSheetWidth, 1.0f / spriteSheetHeight));
+    
+    SKAction *idleAnimation = [SKAction animateWithTextures:spriteTextures timePerFrame:0.042];
+    [theSprite runAction:[SKAction repeatActionForever:idleAnimation] withKey:kAnimationKey.copy];
+    
+    return theSprite;
+}
+
+
++ (PTCritterSprite *)spriteWithSpriteSheetEating:(SKTexture *)theSpriteSheet
+{
+    PTCritterSprite *theSprite = [[PTCritterSprite alloc] init];
+    NSMutableArray *spriteTextures = [[NSMutableArray alloc] init];
+    int spriteSheetWidth = 9, spriteSheetHeight = 5;
+    
+    for (int y = 0; y < spriteSheetHeight; y++) {
+        for (int x = 0; x < 3; x++) {
+            if(x+(y*spriteSheetWidth)<40)
+            {
+                SKTexture *currentTexture;
+                CGRect textureRect = CGRectMake(x / (spriteSheetWidth * 1.0f), y / (spriteSheetHeight * 1.0f), 1.0f /   spriteSheetWidth, 1.0f / spriteSheetHeight);
+                currentTexture = [SKTexture textureWithRect:textureRect inTexture:theSpriteSheet];
+            
+                [spriteTextures addObject:currentTexture];
+            }
         }
     }
     

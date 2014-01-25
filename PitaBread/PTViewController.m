@@ -25,16 +25,35 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    PTCritterScene * scene = [PTCritterScene sceneWithSize:skView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    scene.theParent = self;
+    self.scene = [PTCritterScene sceneWithSize:skView.bounds.size];
+    self.scene.scaleMode = SKSceneScaleModeAspectFill;
+    self.scene.theParent = self;
     
     // Present the scene.
-    [skView presentScene:scene];
+    [skView presentScene:self.scene];
     PTHotPocketDetector* dt = [[PTHotPocketDetector alloc] init];
     UIImage* im = [UIImage imageNamed:@"natural_hotpocket.jpg"];
     bool ishp = [dt isHotPocket:im];
     NSLog(ishp ? @"Yes" : @"No");
+    
+    self.motionManager = [[CMMotionManager alloc] init];
+    self.motionManager.accelerometerUpdateInterval = .2;
+    self.motionManager.gyroUpdateInterval = .2;
+    
+    [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
+                                             withHandler:^(CMAccelerometerData  *accelerometerData, NSError *error) {
+                                                 [self outputAccelertionData:accelerometerData.acceleration];
+                                                 if(error){
+                                                     
+                                                     NSLog(@"%@", error);
+                                                 }
+                                             }];
+    
+    [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue]
+                                    withHandler:^(CMGyroData *gyroData, NSError *error) {
+                                        [self outputRotationData:gyroData.rotationRate];
+                                    }];
+    
 }
 
 - (BOOL)shouldAutorotate
@@ -162,6 +181,21 @@
     
 }
 
+-(void)outputAccelertionData:(CMAcceleration)acceleration
+{
+    if(acceleration.x > 0.5 || acceleration.y > 0.5 || acceleration.z > 0.5)
+    {
+        NSLog(@"Moving");
+    }
+}
+-(void)outputRotationData:(CMRotationRate)rotation
+{
+    if(rotation.x > 0.5 || rotation.y > 0.5 || rotation.z > 0.5)
+    {
+        NSLog(@"Moving");
+    }
+    
+}
 
 - (NSUInteger)supportedInterfaceOrientations
 {

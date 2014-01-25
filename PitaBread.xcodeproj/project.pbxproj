@@ -32,6 +32,9 @@
 		C487896718936D78009D79D5 /* PTColorHistogram.m in Sources */ = {isa = PBXBuildFile; fileRef = C487896518936D78009D79D5 /* PTColorHistogram.m */; };
 		C487896818936D78009D79D5 /* test_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C487896618936D78009D79D5 /* test_photo.jpg */; };
 		D43F94CA1893A116000C1B51 /* PTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D43F94C91893A116000C1B51 /* PTConstants.m */; };
+		F12630271893B183008D8989 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = F12630261893B183008D8989 /* camera.png */; };
+		F12630291893BF20008D8989 /* bowl.png in Resources */ = {isa = PBXBuildFile; fileRef = F12630281893BF20008D8989 /* bowl.png */; };
+		F126302B1893BF28008D8989 /* sprite_eating.png in Resources */ = {isa = PBXBuildFile; fileRef = F126302A1893BF28008D8989 /* sprite_eating.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,9 @@
 		C48789691893777A009D79D5 /* natural_hotpocket.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = natural_hotpocket.jpg; sourceTree = "<group>"; };
 		D43F94C81893A116000C1B51 /* PTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTConstants.h; sourceTree = "<group>"; };
 		D43F94C91893A116000C1B51 /* PTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTConstants.m; sourceTree = "<group>"; };
+		F12630261893B183008D8989 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera.png; path = images/camera.png; sourceTree = "<group>"; };
+		F12630281893BF20008D8989 /* bowl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bowl.png; path = images/bowl.png; sourceTree = "<group>"; };
+		F126302A1893BF28008D8989 /* sprite_eating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sprite_eating.png; path = images/sprite_eating.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +171,9 @@
 				23DAACFF18933AD30016CE31 /* PTCritterScene.h */,
 				23DAAD0018933AD30016CE31 /* PTCritterScene.m */,
 				23DAAD0418933AD30016CE31 /* Images.xcassets */,
+				F12630261893B183008D8989 /* camera.png */,
+				F12630281893BF20008D8989 /* bowl.png */,
+				F126302A1893BF28008D8989 /* sprite_eating.png */,
 				23DAACEE18933AD30016CE31 /* Supporting Files */,
 				C487895E189351DE009D79D5 /* PTHotPocketDetector.h */,
 				C487895F189351DE009D79D5 /* PTHotPocketDetector.m */,
@@ -279,11 +288,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				23DAACF218933AD30016CE31 /* InfoPlist.strings in Resources */,
+				F12630271893B183008D8989 /* camera.png in Resources */,
 				23DAAD31189370B30016CE31 /* idle.jpg in Resources */,
 				23DAAD0518933AD30016CE31 /* Images.xcassets in Resources */,
+				F126302B1893BF28008D8989 /* sprite_eating.png in Resources */,
 				C487896818936D78009D79D5 /* test_photo.jpg in Resources */,
 				2345490118937D5B00CC674C /* idle.jpg in Resources */,
 				23DAACFB18933AD30016CE31 /* Main.storyboard in Resources */,
+				F12630291893BF20008D8989 /* bowl.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
