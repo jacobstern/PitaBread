@@ -7,6 +7,7 @@
 //
 
 #import "PTHotPocketDetector.h"
+#import <Foundation/Foundation.h>
 
 @implementation PTHotPocketDetector
 
