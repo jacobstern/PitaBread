@@ -19,5 +19,6 @@
 @property float *histogram;
 @property int height;
 @property int width;
+@property BOOL doneMaking;
 
 @end

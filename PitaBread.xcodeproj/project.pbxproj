@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2345490118937D5B00CC674C /* idle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2345490018937D5B00CC674C /* idle.jpg */; };
 		23DAACE618933AD30016CE31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAACE518933AD30016CE31 /* Foundation.framework */; };
 		23DAACE818933AD30016CE31 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAACE718933AD30016CE31 /* CoreGraphics.framework */; };
 		23DAACEA18933AD30016CE31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAACE918933AD30016CE31 /* UIKit.framework */; };
@@ -17,7 +18,6 @@
 		23DAACFB18933AD30016CE31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23DAACF918933AD30016CE31 /* Main.storyboard */; };
 		23DAACFE18933AD30016CE31 /* PTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAACFD18933AD30016CE31 /* PTViewController.m */; };
 		23DAAD0118933AD30016CE31 /* PTCritterScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD0018933AD30016CE31 /* PTCritterScene.m */; };
-		23DAAD0318933AD30016CE31 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 23DAAD0218933AD30016CE31 /* Spaceship.png */; };
 		23DAAD0518933AD30016CE31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23DAAD0418933AD30016CE31 /* Images.xcassets */; };
 		23DAAD0C18933AD30016CE31 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAAD0B18933AD30016CE31 /* XCTest.framework */; };
 		23DAAD0D18933AD30016CE31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAACE518933AD30016CE31 /* Foundation.framework */; };
@@ -27,10 +27,10 @@
 		23DAAD231893431A0016CE31 /* PTCritter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD221893431A0016CE31 /* PTCritter.m */; };
 		23DAAD26189344270016CE31 /* PTClientSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD25189344270016CE31 /* PTClientSingleton.m */; };
 		23DAAD2F18936B0B0016CE31 /* PTCritterSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD2E18936B0B0016CE31 /* PTCritterSprite.m */; };
+		23DAAD31189370B30016CE31 /* idle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23DAAD30189370B30016CE31 /* idle.jpg */; };
 		C4878960189351DE009D79D5 /* PTHotPocketDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = C487895F189351DE009D79D5 /* PTHotPocketDetector.m */; };
 		C487896718936D78009D79D5 /* PTColorHistogram.m in Sources */ = {isa = PBXBuildFile; fileRef = C487896518936D78009D79D5 /* PTColorHistogram.m */; };
 		C487896818936D78009D79D5 /* test_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C487896618936D78009D79D5 /* test_photo.jpg */; };
-		F142F539189377F00077ECBD /* PTCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F142F538189377F00077ECBD /* PTCameraViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2345490018937D5B00CC674C /* idle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = idle.jpg; sourceTree = SOURCE_ROOT; };
 		23DAACE218933AD30016CE31 /* PitaBread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PitaBread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23DAACE518933AD30016CE31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		23DAACE718933AD30016CE31 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,7 +61,6 @@
 		23DAACFD18933AD30016CE31 /* PTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTViewController.m; sourceTree = "<group>"; };
 		23DAACFF18933AD30016CE31 /* PTCritterScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTCritterScene.h; sourceTree = "<group>"; };
 		23DAAD0018933AD30016CE31 /* PTCritterScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTCritterScene.m; sourceTree = "<group>"; };
-		23DAAD0218933AD30016CE31 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		23DAAD0418933AD30016CE31 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		23DAAD0A18933AD30016CE31 /* PitaBreadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitaBreadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23DAAD0B18933AD30016CE31 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -73,13 +73,13 @@
 		23DAAD25189344270016CE31 /* PTClientSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTClientSingleton.m; sourceTree = "<group>"; };
 		23DAAD2D18936B0B0016CE31 /* PTCritterSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCritterSprite.h; sourceTree = "<group>"; };
 		23DAAD2E18936B0B0016CE31 /* PTCritterSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCritterSprite.m; sourceTree = "<group>"; };
+		23DAAD30189370B30016CE31 /* idle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = idle.jpg; sourceTree = "<group>"; };
 		C487895E189351DE009D79D5 /* PTHotPocketDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotPocketDetector.h; sourceTree = "<group>"; };
 		C487895F189351DE009D79D5 /* PTHotPocketDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTHotPocketDetector.m; sourceTree = "<group>"; };
 		C487896418936D78009D79D5 /* PTColorHistogram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTColorHistogram.h; sourceTree = "<group>"; };
 		C487896518936D78009D79D5 /* PTColorHistogram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTColorHistogram.m; sourceTree = "<group>"; };
 		C487896618936D78009D79D5 /* test_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_photo.jpg; sourceTree = "<group>"; };
-		F142F537189377F00077ECBD /* PTCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCameraViewController.h; sourceTree = "<group>"; };
-		F142F538189377F00077ECBD /* PTCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCameraViewController.m; sourceTree = "<group>"; };
+		C48789691893777A009D79D5 /* natural_hotpocket.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = natural_hotpocket.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,13 +141,13 @@
 		23DAACED18933AD30016CE31 /* PitaBread */ = {
 			isa = PBXGroup;
 			children = (
+				2345490018937D5B00CC674C /* idle.jpg */,
+				C48789691893777A009D79D5 /* natural_hotpocket.jpg */,
 				C487896418936D78009D79D5 /* PTColorHistogram.h */,
 				C487896518936D78009D79D5 /* PTColorHistogram.m */,
 				C487896618936D78009D79D5 /* test_photo.jpg */,
 				23DAACF618933AD30016CE31 /* PTAppDelegate.h */,
 				23DAACF718933AD30016CE31 /* PTAppDelegate.m */,
-				F142F537189377F00077ECBD /* PTCameraViewController.h */,
-				F142F538189377F00077ECBD /* PTCameraViewController.m */,
 				23DAAD24189344270016CE31 /* PTClientSingleton.h */,
 				23DAAD25189344270016CE31 /* PTClientSingleton.m */,
 				23DAAD211893431A0016CE31 /* PTCritter.h */,
@@ -159,7 +159,6 @@
 				23DAACFD18933AD30016CE31 /* PTViewController.m */,
 				23DAACFF18933AD30016CE31 /* PTCritterScene.h */,
 				23DAAD0018933AD30016CE31 /* PTCritterScene.m */,
-				23DAAD0218933AD30016CE31 /* Spaceship.png */,
 				23DAAD0418933AD30016CE31 /* Images.xcassets */,
 				23DAACEE18933AD30016CE31 /* Supporting Files */,
 				C487895E189351DE009D79D5 /* PTHotPocketDetector.h */,
@@ -275,9 +274,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				23DAACF218933AD30016CE31 /* InfoPlist.strings in Resources */,
+				23DAAD31189370B30016CE31 /* idle.jpg in Resources */,
 				23DAAD0518933AD30016CE31 /* Images.xcassets in Resources */,
-				23DAAD0318933AD30016CE31 /* Spaceship.png in Resources */,
 				C487896818936D78009D79D5 /* test_photo.jpg in Resources */,
+				2345490118937D5B00CC674C /* idle.jpg in Resources */,
 				23DAACFB18933AD30016CE31 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,7 +302,6 @@
 				23DAACF818933AD30016CE31 /* PTAppDelegate.m in Sources */,
 				C487896718936D78009D79D5 /* PTColorHistogram.m in Sources */,
 				23DAACFE18933AD30016CE31 /* PTViewController.m in Sources */,
-				F142F539189377F00077ECBD /* PTCameraViewController.m in Sources */,
 				23DAAD2F18936B0B0016CE31 /* PTCritterSprite.m in Sources */,
 				23DAAD231893431A0016CE31 /* PTCritter.m in Sources */,
 				23DAAD0118933AD30016CE31 /* PTCritterScene.m in Sources */,

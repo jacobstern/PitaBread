@@ -10,6 +10,6 @@
 
 @interface PTCritterSprite : SKSpriteNode
 
-+ (PTCritterSprite *)withTextureAtlas:(SKTextureAtlas *)atlas;
++ (PTCritterSprite *)spriteWithSpriteSheet:(SKTexture *)theSpriteSheet;
 
 @end

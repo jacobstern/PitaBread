@@ -13,8 +13,10 @@
 - (id)init:(UIImage *)im
 {
     self = [super init];
+    self.doneMaking = FALSE;
     [self extractPixelData:im];
     [self makeHistogram];
+    while(!self.doneMaking){}
     [self normalizeHistogram];
     return self;
 }
@@ -43,23 +45,46 @@
 
 - (void)makeHistogram
 {
+    dispatch_queue_t queue = dispatch_get_global_queue(0,0);
+    dispatch_group_t group = dispatch_group_create();
+    
     float *histogram = malloc(64 * sizeof(float));
     memset(histogram, 0, 64*sizeof(float));
     for (int i=0; i<self.height; i++) {
-        for (int j=0; j<self.width; j++) {
-            int byteIndex = (self.width * i * 4) + j * 4;
-            int red = self.data[byteIndex];
-            int green = self.data[byteIndex + 1];
-            int blue = self.data[byteIndex + 2];
-            int alpha = self.data[byteIndex + 3];
-            int redBucket = red / 256.0 * 4.0;
-            int greenBucket = green / 256.0 * 4.0;
-            int blueBucket = blue / 256.0 * 4.0;
-            int bucketIndex = redBucket*16 + greenBucket*4 + blueBucket;
-            histogram[bucketIndex]++;
-        }
+        dispatch_group_async(group,queue, ^{
+            for (int j=0; j<self.width/2; j++) {
+                    int byteIndex = (self.width * i * 4) + j * 4;
+                    int red = self.data[byteIndex];
+                    int green = self.data[byteIndex + 1];
+                    int blue = self.data[byteIndex + 2];
+                    int alpha = self.data[byteIndex + 3];
+                    int redBucket = red / 256.0 * 4.0;
+                    int greenBucket = green / 256.0 * 4.0;
+                    int blueBucket = blue / 256.0 * 4.0;
+                    int bucketIndex = redBucket*16 + greenBucket*4 + blueBucket;
+                    histogram[bucketIndex]++;
+            }
+        });
+        
+        dispatch_group_async(group,queue, ^{
+            for (int j=self.width/2; j<self.width; j++) {
+                int byteIndex = (self.width * i * 4) + j * 4;
+                int red = self.data[byteIndex];
+                int green = self.data[byteIndex + 1];
+                int blue = self.data[byteIndex + 2];
+                int alpha = self.data[byteIndex + 3];
+                int redBucket = red / 256.0 * 4.0;
+                int greenBucket = green / 256.0 * 4.0;
+                int blueBucket = blue / 256.0 * 4.0;
+                int bucketIndex = redBucket*16 + greenBucket*4 + blueBucket;
+                histogram[bucketIndex]++;
+            }
+        });
     }
-    self.histogram = histogram;
+    dispatch_group_notify(group, queue, ^{
+        self.histogram = histogram;
+        self.doneMaking = TRUE;
+    });
 }
 
 - (void)normalizeHistogram

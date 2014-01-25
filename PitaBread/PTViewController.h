@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 
-@interface PTViewController : UIViewController
+@interface PTViewController : UIViewController<UIImagePickerControllerDelegate>
+
+@property UIImagePickerController* picker;
 
 - (void)transitionToCameraView;
 
