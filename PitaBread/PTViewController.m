@@ -90,27 +90,16 @@
     NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];
     
   	NSDictionary *settings = [NSDictionary dictionaryWithObjectsAndKeys:
-                              [NSNumber numberWithFloat: 44100.0],                 AVSampleRateKey,
-                              [NSNumber numberWithInt: kAudioFormatAppleLossless], AVFormatIDKey,
+                              [NSNumber numberWithFloat: 24000.0],                 AVSampleRateKey,
+                              [NSNumber numberWithInt: kAudioFormatMPEG4AAC],      AVFormatIDKey,
                               [NSNumber numberWithInt: 1],                         AVNumberOfChannelsKey,
-                              [NSNumber numberWithInt: AVAudioQualityMax],         AVEncoderAudioQualityKey,
                               nil];
     
   	NSError *error;
     
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-    [session setActive:YES error:nil];
-    [session requestRecordPermission:^(BOOL granted) {
-        if (granted) {
-            // Microphone enabled code
-            NSLog(@"mic enabled");
-        }
-        else {
-            // Microphone disabled code
-            NSLog(@"mic disabled");
-        }
-    }];
+//    AVAudioSession *session = [AVAudioSession sharedInstance];
+//    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+//    [session setActive:YES error:nil];
     
   	self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
     
