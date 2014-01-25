@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SpriteKit/SpriteKit.h>
 #import <CoreMotion/CoreMotion.h>
+#import <AVFoundation/AVFoundation.h>
+#import <CoreAudio/CoreAudioTypes.h>
 #import "PTCritter.h"
 #import "PTBackgroundView.h"
 
 @interface PTViewController : UIViewController<UIImagePickerControllerDelegate, UIAccelerometerDelegate>
 
-@property (nonatomic, retain) UIImagePickerController* picker;
+@property UIImagePickerController* picker;
 @property NSInteger currentImgIdx;
 @property (strong, nonatomic) CMMotionManager *motionManager;
 
@@ -31,8 +32,13 @@
 @property BOOL isInitialLoad;
 @property BOOL critterBeingBorn;
 @property BOOL isEating;
+@property BOOL isHatching;
 
 @property NSInteger moodCounter;
+@property NSInteger hatchingCounter;
+
+@property AVAudioRecorder *recorder;
+@property double lowPassResults;
 
 - (void)transitionToCameraView;
 
