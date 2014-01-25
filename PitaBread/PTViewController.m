@@ -247,7 +247,7 @@
     
     CGPoint pt = [recognizer locationOfTouch:0 inView:[self view]];
     if(pt.x < lCurrentWidth/2 + 70 && pt.x > lCurrentWidth/2 - 70 && !self.isDead
-       && pt.y < lCurrentHeight/2 + 70 && pt.y > lCurrentHeight/2 - 70)
+       && pt.y < lCurrentHeight/2 + 70 && pt.y > lCurrentHeight/2 - 70 && !self.isEating)
     {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
                                              (unsigned long)NULL), ^(void) {
@@ -256,7 +256,7 @@
 
             if(!self.isDead)
             {
-                self.moodCounter = 5;
+                self.moodCounter = 10;
                 self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:13];
             
                 self.critterData.sleep = self.critterData.sleep + 10;
