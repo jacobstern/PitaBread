@@ -37,6 +37,7 @@
     
     self.isInitialLoad = TRUE;
     self.isHatching = FALSE;
+    self.isDead = FALSE;
     self.hatchingCounter = 0;
     self.critterBeingBorn = FALSE;
     self.imageOfEgg = [[UIImageView alloc] init];
@@ -236,13 +237,22 @@
     
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    self.critterData.sleep ++;
-    self.critterData.hunger --;
+    if(!self.isDead)
+    {
+        self.critterData.sleep ++;
+        self.critterData.hunger --;
+    }
     
     self.moodCounter --;
     NSLog([NSString stringWithFormat:@"Hunger: %i", self.critterData.hunger]);
     NSLog([NSString stringWithFormat:@"Sleep: %i", self.critterData.sleep]);
-    if(self.moodCounter <= 0 && !self.isEating && self.critterData.sleep > 200 && self.critterData.hunger > 200 && self.critterData.hunger < 1200)
+    if(self.critterData.sleep <= -500 || self.critterData.hunger <= -500)
+    {
+        self.isDead = TRUE;
+        [self.circleImage removeFromSuperview];
+        self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:12];
+    }
+    else if(self.moodCounter <= 0 && !self.isEating && self.critterData.sleep > 200 && self.critterData.hunger > 200 && self.critterData.hunger < 1200)
     {
         self.moodCounter = 0;
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:1];
@@ -276,7 +286,12 @@
     }
     
     self.currentImgIdx ++;
-    if(self.currentImgIdx >= [[self.currentCritter arrayOfImages] count])
+    
+    if(self.isDead && self.currentImgIdx >= [[self.currentCritter arrayOfImages] count])
+    {
+        self.currentImgIdx = [[self.currentCritter arrayOfImages] count]-1;
+    }
+    else if(self.currentImgIdx >= [[self.currentCritter arrayOfImages] count])
     {
         self.currentImgIdx = 0;
     }
@@ -290,6 +305,11 @@
     else
     {
         [self drawTheEgg];
+    }
+    
+    if(self.isDead)
+    {
+        [self.circleImage removeFromSuperview];
     }
     
     if(self.isHatching)
@@ -408,7 +428,7 @@
 
 - (void)transitionToCameraView
 {
-    if (self.isEating || self.isInitialLoad)
+    if (self.isEating || self.isInitialLoad || self.isDead)
         return;
     else {
         self.isEating= YES;
@@ -465,17 +485,19 @@
 {
     NSInteger lCurrentHeight = self.view.frame.size.height;
     
+    [self.circleImage removeFromSuperview];
+    
     NSInteger radius = 60;
-    UIImageView* circleImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, lCurrentHeight-radius-30, radius, radius)];
-    circleImage.image = [UIImage imageNamed:@"camera.png"];
-    [self.view addSubview:(circleImage)];
+    self.circleImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, lCurrentHeight-radius-30, radius, radius)];
+    self.circleImage.image = [UIImage imageNamed:@"camera.png"];
+    [self.view addSubview:(self.circleImage)];
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(transitionToCameraView)];
     singleTap.numberOfTapsRequired = 1;
-    circleImage.userInteractionEnabled = YES;
+    self.circleImage.userInteractionEnabled = YES;
     
     [self addSwipeGestureForCamera];
-    [circleImage addGestureRecognizer:singleTap];
+    [self.circleImage addGestureRecognizer:singleTap];
 }
 
 - (void)pictureButtonTapped
@@ -551,7 +573,8 @@
         {
             self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:7];
             self.moodCounter = 20;
-            [[[appDelegate arrayOfMusic] objectAtIndex:1] playSound];
+            if(!self.isDead)
+                [[[appDelegate arrayOfMusic] objectAtIndex:1] playSound];
         }
         else
         {
