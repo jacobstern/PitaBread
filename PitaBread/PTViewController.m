@@ -10,6 +10,7 @@
 #import "PTAppDelegate.h"
 #import "PTColorHistogram.h"
 #import "PTHotPocketDetector.h"
+#import "PTCritterSound.h"
 
 @implementation PTViewController
 
@@ -153,6 +154,11 @@
     [[self view] addSubview:self.imageOfCritter];
 }
 
+- (void)playMusic:(int)type
+{
+    
+}
+
 - (void)updateImgIdx
 {
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -171,10 +177,12 @@
     else if(self.critterData.hunger <= 0 && self.moodCounter <= 0 && !self.isEating)
     {
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:10];
+         [[[appDelegate arrayOfMusic] objectAtIndex:0] playSound];
     }
     else if(self.critterData.hunger <= 200 && self.moodCounter <= 0 && !self.isEating)
     {
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:9];
+         [[[appDelegate arrayOfMusic] objectAtIndex:0] playSound];
     }
     else if(self.critterData.sleep <= 0 && self.moodCounter <= 0 && !self.isEating)
     {

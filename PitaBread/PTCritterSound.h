@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface PTCritterSound : NSObject
+
+- (id)init:(NSURL *)soundURL;
+- (void) playSound;
 
 @end

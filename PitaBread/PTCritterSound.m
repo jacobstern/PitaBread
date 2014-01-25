@@ -10,4 +10,18 @@
 
 @implementation PTCritterSound
 
+SystemSoundID mySound;
+
+- (id)init:(NSURL *)soundURL
+{
+    self = [super init];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &mySound);
+    return self;
+}
+
+- (void) playSound
+{
+    AudioServicesPlaySystemSound(mySound);
+}
+
 @end
