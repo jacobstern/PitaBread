@@ -27,7 +27,7 @@
     url = [[NSBundle mainBundle] URLForResource:@"start" withExtension:@".wav"];
     [self.arrayOfMusic addObject:[[PTCritterSound alloc] init:url]];
     
-    //0: eating 1: normal 2:happy 3: mad 4: full 5: sleepy 6: sad 7: mad_very 8: sleepy_very 9: hungry 10: hungry_very 11: Egg
+    //0: eating 1: normal 2:happy 3: mad 4: full 5: sleepy 6: sad 7: mad_very 8: sleepy_very 9: hungry 10: hungry_very 11: Egg 12: Dying
     
     PTCritter* eatingCritter = [[PTCritter alloc] init];
     eatingCritter.arrayOfImages = [[NSMutableArray alloc] init];
@@ -336,6 +336,52 @@
     [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0020.png"]];
     
     [self.arrayOfCritters addObject:eggCritter];
+    
+    
+    PTCritter* dyingCritter = [[PTCritter alloc] init];
+    dyingCritter.arrayOfImages = [[NSMutableArray alloc] init];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0001.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0002.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0003.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0004.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0005.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0006.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0007.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0008.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0009.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0010.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0011.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0012.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0013.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0014.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0015.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0016.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0017.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0018.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0019.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0020.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0021.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0022.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0023.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0024.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0025.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0026.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0027.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0028.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0029.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0030.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0031.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0032.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0033.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0034.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0035.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0036.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0037.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0038.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0039.png"]];
+    [[dyingCritter arrayOfImages] addObject:[UIImage imageNamed:@"dying_0040.png"]];
+    
+    [self.arrayOfCritters addObject:dyingCritter];
     // Override point for customization after application launch.
     return YES;
 }

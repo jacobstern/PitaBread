@@ -37,6 +37,7 @@
     
     self.isInitialLoad = TRUE;
     self.isHatching = FALSE;
+    self.isDead = FALSE;
     self.hatchingCounter = 0;
     self.critterBeingBorn = FALSE;
     self.imageOfEgg = [[UIImageView alloc] init];
@@ -79,6 +80,10 @@
     singleTap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:singleTap];
     
+    NSInteger lCurrentWidth = self.view.frame.size.width;
+    self.speechImage = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth / 2.0 - (213.75 / 2) + 15.0, 75, 213.75, 75)];
+    self.speechImage.image = NULL;
+    [self.view addSubview:self.speechImage];
     // Set up mic listener
     NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];
     
@@ -112,6 +117,7 @@
             NSLog(@"mic disabled");
         }
     }];
+    [self showSpeechBubble:@"speech_FU.png" duration:5.0];
 }
 
 - (void)startHatching
@@ -234,13 +240,22 @@
     
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    self.critterData.sleep ++;
-    self.critterData.hunger --;
+    if(!self.isDead)
+    {
+        self.critterData.sleep ++;
+        self.critterData.hunger --;
+    }
     
     self.moodCounter --;
     NSLog([NSString stringWithFormat:@"Hunger: %i", self.critterData.hunger]);
     NSLog([NSString stringWithFormat:@"Sleep: %i", self.critterData.sleep]);
-    if(self.moodCounter <= 0 && !self.isEating && self.critterData.sleep > 200 && self.critterData.hunger > 200 && self.critterData.hunger < 1200)
+    if(self.critterData.sleep <= -500 || self.critterData.hunger <= -500)
+    {
+        self.isDead = TRUE;
+        [self.circleImage removeFromSuperview];
+        self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:12];
+    }
+    else if(self.moodCounter <= 0 && !self.isEating && self.critterData.sleep > 200 && self.critterData.hunger > 200 && self.critterData.hunger < 1200)
     {
         self.moodCounter = 0;
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:1];
@@ -274,7 +289,12 @@
     }
     
     self.currentImgIdx ++;
-    if(self.currentImgIdx >= [[self.currentCritter arrayOfImages] count])
+    
+    if(self.isDead && self.currentImgIdx >= [[self.currentCritter arrayOfImages] count])
+    {
+        self.currentImgIdx = [[self.currentCritter arrayOfImages] count]-1;
+    }
+    else if(self.currentImgIdx >= [[self.currentCritter arrayOfImages] count])
     {
         self.currentImgIdx = 0;
     }
@@ -288,6 +308,11 @@
     else
     {
         [self drawTheEgg];
+    }
+    
+    if(self.isDead)
+    {
+        [self.circleImage removeFromSuperview];
     }
     
     if(self.isHatching)
@@ -406,7 +431,7 @@
 
 - (void)transitionToCameraView
 {
-    if (self.isEating || self.isInitialLoad)
+    if (self.isEating || self.isInitialLoad || self.isDead)
         return;
     else {
         self.isEating= YES;
@@ -463,17 +488,19 @@
 {
     NSInteger lCurrentHeight = self.view.frame.size.height;
     
+    [self.circleImage removeFromSuperview];
+    
     NSInteger radius = 60;
-    UIImageView* circleImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, lCurrentHeight-radius-30, radius, radius)];
-    circleImage.image = [UIImage imageNamed:@"camera.png"];
-    [self.view addSubview:(circleImage)];
+    self.circleImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, lCurrentHeight-radius-30, radius, radius)];
+    self.circleImage.image = [UIImage imageNamed:@"camera.png"];
+    [self.view addSubview:(self.circleImage)];
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(transitionToCameraView)];
     singleTap.numberOfTapsRequired = 1;
-    circleImage.userInteractionEnabled = YES;
+    self.circleImage.userInteractionEnabled = YES;
     
     [self addSwipeGestureForCamera];
-    [circleImage addGestureRecognizer:singleTap];
+    [self.circleImage addGestureRecognizer:singleTap];
 }
 
 - (void)pictureButtonTapped
@@ -513,6 +540,8 @@
     });
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+    self.messageTimer = nil;
 }
 
 
@@ -547,7 +576,8 @@
         {
             self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:7];
             self.moodCounter = 20;
-            [[[appDelegate arrayOfMusic] objectAtIndex:1] playSound];
+            if(!self.isDead)
+                [[[appDelegate arrayOfMusic] objectAtIndex:1] playSound];
         }
         else
         {
@@ -572,6 +602,22 @@
     [super didReceiveMemoryWarning];
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     // Release any cached data, images, etc that aren't in use.
+}
+
+- (void)closeSpeechBubble
+{
+    self.speechImage.image = nil;
+}
+
+- (void)showSpeechBubble:(NSString *)imageName duration:(NSTimeInterval)duration
+{
+    UIImage *image = [UIImage imageNamed:imageName];
+    if (self.messageTimer) {
+        [self.messageTimer invalidate];
+    }
+    self.messageTimer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(closeSpeechBubble) userInfo:nil repeats:NO];
+    [[NSRunLoop currentRunLoop] addTimer:self.messageTimer forMode:NSRunLoopCommonModes];
+    self.speechImage.image = image;
 }
 
 @end

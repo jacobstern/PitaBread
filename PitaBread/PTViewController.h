@@ -26,12 +26,16 @@
 @property UIImageView* foodImage;
 @property UIImageView* imageOfCritter;
 @property UIImageView* imageOfEgg;
+@property UIImageView* speechImage;
+@property UIImageView* circleImage;
 @property (weak, nonatomic) IBOutlet PTBackgroundView *backgroundView;
+@property NSTimer *messageTimer;
 
 @property BOOL isInitialLoad;
 @property BOOL critterBeingBorn;
 @property BOOL isEating;
 @property BOOL isHatching;
+@property BOOL isDead;
 
 @property NSInteger moodCounter;
 @property NSInteger hatchingCounter;
@@ -40,5 +44,8 @@
 @property double lowPassResults;
 
 - (void)transitionToCameraView;
+
+- (void)closeSpeechBubble;
+- (void)showSpeechBubble:(NSString *)imageName duration:(NSTimeInterval)duration;
 
 @end
