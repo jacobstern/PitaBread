@@ -9,13 +9,24 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 #import <CoreMotion/CoreMotion.h>
-#import "PTCritterScene.h"
+#import "PTCritter.h"
 
 @interface PTViewController : UIViewController<UIImagePickerControllerDelegate, UIAccelerometerDelegate>
 
-@property PTCritterScene* scene;
-@property UIImagePickerController* picker;
+@property (nonatomic, retain) UIImagePickerController* picker;
+@property NSInteger currentImgIdx;
 @property (strong, nonatomic) CMMotionManager *motionManager;
+@property PTCritter* currentCritter;
+
+@property UIImageView* bowlImage;
+@property UIImageView* foodImage;
+@property UIImageView* imageOfCritter;
+
+@property BOOL isInitialLoad;
+@property BOOL critterBeingBorn;
+@property BOOL isEating;
+
+@property NSInteger moodCounter;
 
 - (void)transitionToCameraView;
 

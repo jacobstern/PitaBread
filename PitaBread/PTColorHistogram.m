@@ -17,6 +17,7 @@
     [self extractPixelData:im];
     [self makeHistogram];
     while(!self.doneMaking){}
+    free(self.data);
     [self normalizeHistogram];
     return self;
 }

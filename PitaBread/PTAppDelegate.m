@@ -7,12 +7,65 @@
 //
 
 #import "PTAppDelegate.h"
-#import "PTClientSingleton.h"
+#import "PTCritter.h"
 
 @implementation PTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.arrayOfCritters = [[NSMutableArray alloc] init];
+    
+    PTCritter* eatingCritter = [[PTCritter alloc] init];
+    eatingCritter.arrayOfImages = [[NSMutableArray alloc] init];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating1.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating2.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating3.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating4.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating5.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating6.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating7.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating8.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating9.png"]];
+    [[eatingCritter arrayOfImages] addObject:[UIImage imageNamed:@"eating10.png"]];
+    
+    [self.arrayOfCritters addObject:eatingCritter];
+    
+    PTCritter* idleCritter = [[PTCritter alloc] init];
+    idleCritter.arrayOfImages = [[NSMutableArray alloc] init];
+    [[idleCritter arrayOfImages] addObject:[UIImage imageNamed:@"idle1.png"]];
+    [[idleCritter arrayOfImages] addObject:[UIImage imageNamed:@"idle2.png"]];
+    [[idleCritter arrayOfImages] addObject:[UIImage imageNamed:@"idle3.png"]];
+    [[idleCritter arrayOfImages] addObject:[UIImage imageNamed:@"idle4.png"]];
+    [[idleCritter arrayOfImages] addObject:[UIImage imageNamed:@"idle5.png"]];
+    [[idleCritter arrayOfImages] addObject:[UIImage imageNamed:@"idle6.png"]];
+    [[idleCritter arrayOfImages] addObject:[UIImage imageNamed:@"idle7.png"]];
+    
+    [self.arrayOfCritters addObject:idleCritter];
+    
+    
+    PTCritter* happyCritter = [[PTCritter alloc] init];
+    happyCritter.arrayOfImages = [[NSMutableArray alloc] init];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy1.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy2.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy3.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy4.png"]];
+    [[happyCritter arrayOfImages] addObject:[UIImage imageNamed:@"happy5.png"]];
+    
+    [self.arrayOfCritters addObject:happyCritter];
+    
+    
+    PTCritter* madCritter = [[PTCritter alloc] init];
+    madCritter.arrayOfImages = [[NSMutableArray alloc] init];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad1.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad2.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad3.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad4.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad5.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad6.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad7.png"]];
+    [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad8.png"]];
+    
+    [self.arrayOfCritters addObject:madCritter];
     // Override point for customization after application launch.
     return YES;
 }
@@ -41,7 +94,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [[PTClientSingleton instance] persistToUserDefaults];
+    
 }
 
 @end
