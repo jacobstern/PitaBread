@@ -8,6 +8,8 @@
 
 #import "PTViewController.h"
 #import "PTCritterScene.h"
+#import "PTColorHistogram.h"
+#import "PTHotPocketDetector.h"
 
 @implementation PTViewController
 
@@ -26,6 +28,10 @@
     
     // Present the scene.
     [skView presentScene:scene];
+    PTHotPocketDetector* dt = [[PTHotPocketDetector alloc] init];
+    UIImage* im = [UIImage imageNamed:@"natural_hotpocket.jpg"];
+    bool ishp = [dt isHotPocket:im];
+    NSLog(ishp ? @"Yes" : @"No");
 }
 
 - (BOOL)shouldAutorotate

@@ -10,6 +10,19 @@
 
 @interface PTCritter : NSObject
 
-@property (nonatomic) double hunger;
+@property (nonatomic) int hunger;
+@property (nonatomic) int mood; // recovers over time; goes down with scolding; up slightly with hot pockets
+@property (nonatomic) int health;
+
+@property (nonatomic) int sleep;
+@property (nonatomic) int hygeine;
+
+@property (nonatomic) int training;
+
+@property (nonatomic) bool refuseToEat;
+
+@property (nonatomic) int hoursAlive;
+
+@property (nonatomic) bool isDead;
 
 @end
