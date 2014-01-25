@@ -99,7 +99,16 @@
   		[self.recorder record];
   	} else
   		NSLog([error description]);
-    
+    [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+        if (granted) {
+            // Microphone enabled code
+            NSLog(@"mic enabled");
+        }
+        else {
+            // Microphone disabled code
+            NSLog(@"mic disabled");
+        }
+    }];
 }
 
 - (void)startHatching
