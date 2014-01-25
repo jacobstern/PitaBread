@@ -29,6 +29,9 @@
 		23DAAD2F18936B0B0016CE31 /* PTCritterSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD2E18936B0B0016CE31 /* PTCritterSprite.m */; };
 		23DAAD31189370B30016CE31 /* idle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23DAAD30189370B30016CE31 /* idle.jpg */; };
 		C4878960189351DE009D79D5 /* PTHotPocketDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = C487895F189351DE009D79D5 /* PTHotPocketDetector.m */; };
+		C487896718936D78009D79D5 /* PTColorHistogram.m in Sources */ = {isa = PBXBuildFile; fileRef = C487896518936D78009D79D5 /* PTColorHistogram.m */; };
+		C487896818936D78009D79D5 /* test_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C487896618936D78009D79D5 /* test_photo.jpg */; };
+		C487896A1893777A009D79D5 /* natural_hotpocket.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C48789691893777A009D79D5 /* natural_hotpocket.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,10 @@
 		23DAAD30189370B30016CE31 /* idle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = idle.jpg; sourceTree = "<group>"; };
 		C487895E189351DE009D79D5 /* PTHotPocketDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotPocketDetector.h; sourceTree = "<group>"; };
 		C487895F189351DE009D79D5 /* PTHotPocketDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTHotPocketDetector.m; sourceTree = "<group>"; };
+		C487896418936D78009D79D5 /* PTColorHistogram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTColorHistogram.h; sourceTree = "<group>"; };
+		C487896518936D78009D79D5 /* PTColorHistogram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTColorHistogram.m; sourceTree = "<group>"; };
+		C487896618936D78009D79D5 /* test_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_photo.jpg; sourceTree = "<group>"; };
+		C48789691893777A009D79D5 /* natural_hotpocket.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = natural_hotpocket.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +275,7 @@
 				23DAAD31189370B30016CE31 /* idle.jpg in Resources */,
 				23DAAD0518933AD30016CE31 /* Images.xcassets in Resources */,
 				23DAAD0318933AD30016CE31 /* Spaceship.png in Resources */,
+				C487896818936D78009D79D5 /* test_photo.jpg in Resources */,
 				23DAACFB18933AD30016CE31 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,6 +298,7 @@
 				C4878960189351DE009D79D5 /* PTHotPocketDetector.m in Sources */,
 				23DAAD26189344270016CE31 /* PTClientSingleton.m in Sources */,
 				23DAACF818933AD30016CE31 /* PTAppDelegate.m in Sources */,
+				C487896718936D78009D79D5 /* PTColorHistogram.m in Sources */,
 				23DAACFE18933AD30016CE31 /* PTViewController.m in Sources */,
 				23DAAD2F18936B0B0016CE31 /* PTCritterSprite.m in Sources */,
 				23DAAD231893431A0016CE31 /* PTCritter.m in Sources */,

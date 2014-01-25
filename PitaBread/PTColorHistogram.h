@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#import <UIKit/UIKit.h>
 
 @interface PTColorHistogram : NSObject
+
+- (id)init:(UIImage *)im;
+
+@property unsigned char *data;
+@property float *histogram;
+@property int height;
+@property int width;
 
 @end

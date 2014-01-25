@@ -10,4 +10,6 @@
 
 @interface PTHotPocketDetector : NSObject
 
+- (bool)isHotPocket:(UIImage*)im;
+
 @end
