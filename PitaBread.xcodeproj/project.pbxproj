@@ -11,6 +11,7 @@
 		231350EC18942C4900178915 /* speech_FU.png in Resources */ = {isa = PBXBuildFile; fileRef = 231350E918942C4900178915 /* speech_FU.png */; };
 		231350ED18942C4900178915 /* speech_hot.png in Resources */ = {isa = PBXBuildFile; fileRef = 231350EA18942C4900178915 /* speech_hot.png */; };
 		231350EE18942C4900178915 /* speech_ZZZ.png in Resources */ = {isa = PBXBuildFile; fileRef = 231350EB18942C4900178915 /* speech_ZZZ.png */; };
+		231350F0189450D800178915 /* logo_cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = 231350EF189450D800178915 /* logo_cropped.png */; };
 		2345490118937D5B00CC674C /* idle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2345490018937D5B00CC674C /* idle.jpg */; };
 		23DAACE618933AD30016CE31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAACE518933AD30016CE31 /* Foundation.framework */; };
 		23DAACE818933AD30016CE31 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAACE718933AD30016CE31 /* CoreGraphics.framework */; };
@@ -468,6 +469,7 @@
 		231350E918942C4900178915 /* speech_FU.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speech_FU.png; path = images/speech_FU.png; sourceTree = "<group>"; };
 		231350EA18942C4900178915 /* speech_hot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speech_hot.png; path = images/speech_hot.png; sourceTree = "<group>"; };
 		231350EB18942C4900178915 /* speech_ZZZ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speech_ZZZ.png; path = images/speech_ZZZ.png; sourceTree = "<group>"; };
+		231350EF189450D800178915 /* logo_cropped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_cropped.png; path = images/logo_cropped.png; sourceTree = "<group>"; };
 		2345490018937D5B00CC674C /* idle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = idle.jpg; sourceTree = SOURCE_ROOT; };
 		23DAACE218933AD30016CE31 /* PitaBread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PitaBread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23DAACE518933AD30016CE31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -989,6 +991,7 @@
 		23DAACED18933AD30016CE31 /* PitaBread */ = {
 			isa = PBXGroup;
 			children = (
+				231350EF189450D800178915 /* logo_cropped.png */,
 				C487897B18942329009D79D5 /* music */,
 				D43F94D318941864000C1B51 /* PTCritterSound.h */,
 				D43F94D418941864000C1B51 /* PTCritterSound.m */,
@@ -1717,6 +1720,7 @@
 				F191EF531894029500DF33B5 /* happy_0010.png in Resources */,
 				F191EFE81894029500DF33B5 /* sad_0019.png in Resources */,
 				F191EFEE1894029500DF33B5 /* sad_very_0005.png in Resources */,
+				231350F0189450D800178915 /* logo_cropped.png in Resources */,
 				F191EF7C1894029500DF33B5 /* hungry_0011.png in Resources */,
 				F191F0401894029500DF33B5 /* smelly_very_0007.png in Resources */,
 				F191EFD81894029500DF33B5 /* sad_0003.png in Resources */,
