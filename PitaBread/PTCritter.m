@@ -10,4 +10,6 @@
 
 @implementation PTCritter
 
+@synthesize hunger;
+
 @end

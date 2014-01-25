@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Team Name Optional. All rights reserved.
 //
 
+#import "PTClientSingleton.h"
 #import "PTCritterScene.h"
+#import "PTCritter.h"
 
 @interface PTCritterScene()
 
@@ -31,7 +33,9 @@
         startPromptLabelNode.position = CGPointMake(CGRectGetMidX(self.frame),
                                        CGRectGetMidY(self.frame));
         
-        
+        PTCritter *critter = [[PTCritter alloc] init];
+        critter.hunger = 1.0;
+        [PTClientSingleton instance].clientCritter = critter;
         
         [self addChild:startPromptLabelNode];
     }
