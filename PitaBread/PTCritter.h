@@ -25,4 +25,9 @@
 
 @property (nonatomic) bool isDead;
 
+- (void)feed:(int)pts;
+- (void)sleep:(int)pts;
+- (void)clean:(int)pts;
+- (void)scold;
+
 @end

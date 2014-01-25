@@ -12,5 +12,4 @@
 
 @synthesize hunger;
 
-
 @end
