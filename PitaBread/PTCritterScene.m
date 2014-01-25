@@ -33,10 +33,6 @@
         startPromptLabelNode.position = CGPointMake(CGRectGetMidX(self.frame),
                                        CGRectGetMidY(self.frame));
         
-        PTCritter *critter = [[PTCritter alloc] init];
-        critter.hunger = 1.0;
-        [PTClientSingleton instance].clientCritter = critter;
-        
         [self addChild:startPromptLabelNode];
     }
     return self;
@@ -45,26 +41,15 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
-    
-    
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
+    if (![PTClientSingleton instance].clientCritter) {
+        [PTClientSingleton instance].clientCritter = [[PTCritter alloc] init];
     }
 }
 
 -(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
+    if ([[PTClientSingleton instance] clientCritter]) {
+        startPromptLabelNode.hidden = YES;
+    }
 }
 
 @end
