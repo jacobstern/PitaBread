@@ -15,7 +15,8 @@ SystemSoundID mySound;
 - (id)init:(NSURL *)soundURL
 {
     self = [super init];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &mySound);
+    OSStatus status = AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &mySound);
+    NSLog(@"status = %ld", status);
     return self;
 }
 
