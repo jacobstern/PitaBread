@@ -28,6 +28,7 @@
 @property UIImageView* imageOfEgg;
 @property UIImageView* speechImage;
 @property UIImageView* circleImage;
+@property UIImageView* splashImage;
 @property (weak, nonatomic) IBOutlet PTBackgroundView *backgroundView;
 @property NSTimer *messageTimer;
 
@@ -36,6 +37,8 @@
 @property BOOL isEating;
 @property BOOL isHatching;
 @property BOOL isDead;
+@property BOOL inEgg;
+
 
 @property NSInteger moodCounter;
 @property NSInteger hatchingCounter;

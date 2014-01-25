@@ -40,6 +40,7 @@
     self.isInitialLoad = TRUE;
     self.isHatching = FALSE;
     self.isDead = FALSE;
+    self.inEgg = TRUE;
     self.hatchingCounter = 0;
     self.critterBeingBorn = FALSE;
     self.imageOfEgg = [[UIImageView alloc] init];
@@ -83,6 +84,7 @@
     [self.view addGestureRecognizer:singleTap];
     
     NSInteger lCurrentWidth = self.view.frame.size.width;
+    NSInteger lCurrentHeight = self.view.frame.size.height;
     self.speechImage = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth / 2.0 - (213.75 / 2) + 15.0, 75, 213.75, 75)];
     self.speechImage.image = nil;
     [self.view addSubview:self.speechImage];
@@ -100,6 +102,16 @@
 //    AVAudioSession *session = [AVAudioSession sharedInstance];
 //    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
 //    [session setActive:YES error:nil];
+//    [session requestRecordPermission:^(BOOL granted) {
+//        if (granted) {
+//            // Microphone enabled code
+//            NSLog(@"mic enabled");
+//        }
+//        else {
+//            // Microphone disabled code
+//            NSLog(@"mic disabled");
+//        }
+//    }];
     
   	self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
     
@@ -108,15 +120,28 @@
   		self.recorder.meteringEnabled = YES;
   		[self.recorder record];
   	} else
-  		NSLog([error description]);}
+  		NSLog([error description]);
+    UIImage *splashImageSource = [UIImage imageNamed:@"logo_cropped.png"];
+    self.splashImage = [[UIImageView alloc] initWithImage:splashImageSource];
+    self.splashImage.frame = CGRectMake(0, 50, lCurrentWidth, .433 * lCurrentWidth);
+    [self.view addSubview:self.splashImage];
+}
 
 - (void)startHatching
 {
-    self.isHatching = TRUE;
+    [UIView animateWithDuration:0.5 delay:0.0 options:0 animations:^{
+        // Animate the alpha value of your imageView from 1.0 to 0.0 here
+        self.splashImage.alpha = 0.0f;
+    } completion:^(BOOL finished) {
+        // Once the animation is completed and the alpha has gone to 0.0, hide the view for good
+        self.splashImage.hidden = YES;
+        self.isHatching = TRUE;
+    }];
 }
 
 - (void)critterBorn
 {
+    self.inEgg = FALSE;
     if([self isInitialLoad] && ![self critterBeingBorn])
     {
         NSInteger lCurrentWidth = self.view.frame.size.width;
@@ -149,18 +174,28 @@
     NSInteger lCurrentWidth = self.view.frame.size.width;
     NSInteger lCurrentHeight = self.view.frame.size.height;
     NSInteger dimensions = 330;
-    [self.imageOfEgg removeFromSuperview];
     if(self.hatchingCounter < 20)
     {
+        [self.imageOfEgg removeFromSuperview];
         self.imageOfEgg = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth/2-dimensions/2, lCurrentHeight-dimensions/2-40, dimensions, dimensions)];
         self.imageOfEgg.image = [[[[appDelegate arrayOfCritters] objectAtIndex:11] arrayOfImages] objectAtIndex:self.hatchingCounter];
-        [[self view] addSubview:self.imageOfEgg];
+        [self.view addSubview:self.imageOfEgg];
         
-        if(self.hatchingCounter == 8)
+        if(self.hatchingCounter == 8) {
             [self critterBorn];
+        }
     }
     else
     {
+        if (self.isHatching) {
+            [UIView animateWithDuration:0.3 delay:0.0 options:0 animations:^{
+                // Animate the alpha value of your imageView from 1.0 to 0.0 here
+                self.imageOfEgg.alpha = 0.0f;
+            } completion:^(BOOL finished) {
+                // Once the animation is completed and the alpha has gone to 0.0, hide the view for good
+                self.imageOfEgg.hidden = YES;
+            }];
+        }
         self.isHatching = FALSE;
     }
 }
@@ -216,6 +251,36 @@
     self.imageOfCritter = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth/2-dimensions/2, lCurrentHeight/2-dimensions/2, dimensions, dimensions)];
     self.imageOfCritter.image = [[self.currentCritter arrayOfImages] objectAtIndex:self.currentImgIdx];
     [[self view] addSubview:self.imageOfCritter];
+    
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(petCritter:)];
+    swipeGesture.direction = (UISwipeGestureRecognizerDirectionDown);
+    [self.view addGestureRecognizer:swipeGesture];
+}
+
+- (void)petCritter:(UISwipeGestureRecognizer*)recognizer
+{
+    NSInteger lCurrentWidth = self.view.frame.size.width;
+    NSInteger lCurrentHeight = self.view.frame.size.height;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
+                                             (unsigned long)NULL), ^(void) {
+        CGPoint pt = [recognizer locationOfTouch:0 inView:[self view]];
+        if(pt.x < lCurrentWidth/2 + 130 && pt.x > lCurrentWidth/2 - 130 && !self.isDead
+           && pt.y < lCurrentHeight/2 + 130 && pt.y > lCurrentHeight/2 - 130 && !self.isEating)
+        {
+            PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+            if(!self.isDead)
+            {
+                self.moodCounter = 10;
+                self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:13];
+            
+                self.critterData.sleep = self.critterData.sleep + 10;
+                self.critterData.hunger =  self.critterData.hunger + 10;
+            }
+        }
+        
+    });
 }
 
 - (void)playMusic:(int)type
@@ -230,16 +295,16 @@
     
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    if(!self.isDead)
+    if(!self.isDead && self.critterBeingBorn)
     {
         self.critterData.sleep ++;
         self.critterData.hunger --;
     }
     
-    if (self.critterData.hunger <= 200 && self.critterData.hunger % 100 == 0) {
-        [self showSpeechBubble:@"speech_hot.png" duration:4.0];
-    } else if (self.critterData.sleep <= 200 && self.critterData.sleep % 100 == 0) {
-        [self showSpeechBubble:@"speech_ZZZ.png" duration:4.0];
+    if (self.critterData.hunger <= 180 && !self.isDead) {
+        [self showSpeechBubble:@"speech_hot.png" duration:1.0];
+    } else if (self.critterData.sleep <= 180 && !self.isDead) {
+        [self showSpeechBubble:@"speech_ZZZ.png" duration:1.0];
     }/* else if (![self isShowingSpeechBubble] && self.critterData.sleep % 400 == 0) {
         [self showSpeechBubble:@"speech_FU.png" duration:4.0];
     }*/
@@ -412,7 +477,8 @@
                 sleep(3);
                 NSLog(@"Is HotPocket");
                 self.moodCounter = 10;
-                self.critterData.hunger += 1500;
+                if(!self.isDead)
+                    self.critterData.hunger += 1500;
                 self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:2];
                 [[[appDelegate arrayOfMusic] objectAtIndex:2] playSound];
             }
@@ -492,19 +558,22 @@
 {
     NSInteger lCurrentHeight = self.view.frame.size.height;
     
-    [self.circleImage removeFromSuperview];
-    
     NSInteger radius = 60;
+    [self.circleImage removeFromSuperview];
     self.circleImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, lCurrentHeight-radius-30, radius, radius)];
     self.circleImage.image = [UIImage imageNamed:@"camera.png"];
     [self.view addSubview:(self.circleImage)];
     
+    
+    UIImageView* circleButton = [[UIImageView alloc] initWithFrame:CGRectMake(20, lCurrentHeight-radius-30, radius, radius)];
+    [self.view addSubview:(circleButton)];
+    
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(transitionToCameraView)];
     singleTap.numberOfTapsRequired = 1;
-    self.circleImage.userInteractionEnabled = YES;
+    circleButton.userInteractionEnabled = YES;
     
     [self addSwipeGestureForCamera];
-    [self.circleImage addGestureRecognizer:singleTap];
+    [circleButton addGestureRecognizer:singleTap];
 }
 
 - (void)pictureButtonTapped
@@ -580,7 +649,7 @@
         {
             self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:7];
             self.moodCounter = 20;
-            if(!self.isDead)
+            if(!self.isDead && !self.inEgg)
                 [[[appDelegate arrayOfMusic] objectAtIndex:1] playSound];
         }
         else
