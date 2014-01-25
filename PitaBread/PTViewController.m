@@ -16,6 +16,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //GUARD FOR NO CAMERA
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                              message:@"Device has no camera"
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles: nil];
+        
+        [myAlertView show];
+        
+    }
+    
+    
     self.isInitialLoad = TRUE;
     self.critterBeingBorn = FALSE;
     
