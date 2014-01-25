@@ -10,6 +10,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import <CoreMotion/CoreMotion.h>
 #import "PTCritter.h"
+#import "PTBackgroundView.h"
 
 @interface PTViewController : UIViewController<UIImagePickerControllerDelegate, UIAccelerometerDelegate>
 
@@ -23,6 +24,7 @@
 @property UIImageView* bowlImage;
 @property UIImageView* foodImage;
 @property UIImageView* imageOfCritter;
+@property (weak, nonatomic) IBOutlet PTBackgroundView *backgroundView;
 
 @property BOOL isInitialLoad;
 @property BOOL critterBeingBorn;
