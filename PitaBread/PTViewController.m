@@ -98,14 +98,6 @@
     
   	NSError *error;
     
-  	self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
-    
-  	if (self.recorder) {
-  		[self.recorder prepareToRecord];
-  		self.recorder.meteringEnabled = YES;
-  		[self.recorder record];
-  	} else
-  		NSLog([error description]);
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
     [session setActive:YES error:nil];
@@ -119,7 +111,15 @@
             NSLog(@"mic disabled");
         }
     }];
-}
+    
+  	self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
+    
+  	if (self.recorder) {
+  		[self.recorder prepareToRecord];
+  		self.recorder.meteringEnabled = YES;
+  		[self.recorder record];
+  	} else
+  		NSLog([error description]);}
 
 - (void)startHatching
 {
