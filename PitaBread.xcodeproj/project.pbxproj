@@ -425,7 +425,7 @@
 		C487896518936D78009D79D5 /* PTColorHistogram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTColorHistogram.m; sourceTree = "<group>"; };
 		C487896618936D78009D79D5 /* test_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_photo.jpg; sourceTree = "<group>"; };
 		C48789691893777A009D79D5 /* natural_hotpocket.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = natural_hotpocket.jpg; sourceTree = "<group>"; };
-		C487897C18942329009D79D5 /* angry.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = angry.wav; path = music/angry.wav; sourceTree = "<group>"; };
+		C487897C18942329009D79D5 /* angry.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = angry.wav; sourceTree = "<group>"; };
 		C487897D18942329009D79D5 /* happy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = happy.wav; sourceTree = "<group>"; };
 		C487897E18942329009D79D5 /* Hot Pockets.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Hot Pockets.wav"; sourceTree = "<group>"; };
 		C487897F18942329009D79D5 /* hungry.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hungry.wav; sourceTree = "<group>"; };
@@ -842,7 +842,6 @@
 		23DAACED18933AD30016CE31 /* PitaBread */ = {
 			isa = PBXGroup;
 			children = (
-				C487897C18942329009D79D5 /* angry.wav */,
 				C487897B18942329009D79D5 /* music */,
 				D43F94D318941864000C1B51 /* PTCritterSound.h */,
 				D43F94D418941864000C1B51 /* PTCritterSound.m */,
@@ -905,6 +904,7 @@
 		C487897B18942329009D79D5 /* music */ = {
 			isa = PBXGroup;
 			children = (
+				C487897C18942329009D79D5 /* angry.wav */,
 				C487897D18942329009D79D5 /* happy.wav */,
 				C487897E18942329009D79D5 /* Hot Pockets.wav */,
 				C487897F18942329009D79D5 /* hungry.wav */,
