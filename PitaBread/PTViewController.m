@@ -254,7 +254,7 @@
     [[self view] addSubview:self.imageOfCritter];
     
     UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(petCritter:)];
-    swipeGesture.direction = (UISwipeGestureRecognizerDirectionDown);
+    swipeGesture.direction = (UISwipeGestureRecognizerDirectionDown | UISwipeGestureRecognizerDirectionLeft | UISwipeGestureRecognizerDirectionRight);
     [self.view addGestureRecognizer:swipeGesture];
 }
 
