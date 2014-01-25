@@ -19,7 +19,6 @@
     while(!self.doneMaking){
         sleep(2);
     }
-    free(self.data);
     [self normalizeHistogram];
     return self;
 }
