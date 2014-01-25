@@ -18,6 +18,8 @@
 {
     [super viewDidLoad];
     
+    self.suppressHungryMessage = NO;
+    
     //GUARD FOR NO CAMERA
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         
@@ -83,7 +85,7 @@
     
     NSInteger lCurrentWidth = self.view.frame.size.width;
     self.speechImage = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth / 2.0 - (213.75 / 2) + 15.0, 75, 213.75, 75)];
-    self.speechImage.image = NULL;
+    self.speechImage.image = nil;
     [self.view addSubview:self.speechImage];
     // Set up mic listener
     NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];
@@ -105,7 +107,10 @@
   		[self.recorder record];
   	} else
   		NSLog([error description]);
-    [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    [session setActive:YES error:nil];
+    [session requestRecordPermission:^(BOOL granted) {
         if (granted) {
             // Microphone enabled code
             NSLog(@"mic enabled");
@@ -115,7 +120,6 @@
             NSLog(@"mic disabled");
         }
     }];
-    [self showSpeechBubble:@"speech_FU.png" duration:5.0];
 }
 
 - (void)startHatching
@@ -245,6 +249,14 @@
         self.critterData.hunger --;
     }
     
+    if (self.critterData.hunger <= 200 && self.critterData.hunger % 100 == 0) {
+        [self showSpeechBubble:@"speech_hot.png" duration:4.0];
+    } else if (self.critterData.sleep <= 200 && self.critterData.sleep % 100 == 0) {
+        [self showSpeechBubble:@"speech_ZZZ.png" duration:4.0];
+    }/* else if (![self isShowingSpeechBubble] && self.critterData.sleep % 400 == 0) {
+        [self showSpeechBubble:@"speech_FU.png" duration:4.0];
+    }*/
+    
     self.moodCounter --;
     NSLog([NSString stringWithFormat:@"Hunger: %i", self.critterData.hunger]);
     NSLog([NSString stringWithFormat:@"Sleep: %i", self.critterData.sleep]);
@@ -258,6 +270,8 @@
     {
         self.moodCounter = 0;
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:1];
+        
+        self.suppressHungryMessage = NO;
     }
     else if(self.critterData.hunger <= 0 && self.moodCounter <= 0 && !self.isEating)
     {
@@ -265,7 +279,6 @@
             [[[appDelegate arrayOfMusic] objectAtIndex:0] playSound];
         }
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:10];
-
     }
     else if(self.critterData.hunger <= 200 && self.moodCounter <= 0 && !self.isEating)
     {
@@ -606,17 +619,22 @@
 - (void)closeSpeechBubble
 {
     self.speechImage.image = nil;
+    [self.messageTimer invalidate];
 }
 
 - (void)showSpeechBubble:(NSString *)imageName duration:(NSTimeInterval)duration
 {
     UIImage *image = [UIImage imageNamed:imageName];
-    if (self.messageTimer) {
-        [self.messageTimer invalidate];
-    }
+    [self.messageTimer invalidate];
     self.messageTimer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(closeSpeechBubble) userInfo:nil repeats:NO];
     [[NSRunLoop currentRunLoop] addTimer:self.messageTimer forMode:NSRunLoopCommonModes];
     self.speechImage.image = image;
 }
+
+- (BOOL)isShowingSpeechBubble
+{
+    return self.messageTimer && [self.messageTimer isValid];
+}
+
 
 @end

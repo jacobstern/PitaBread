@@ -26,6 +26,8 @@
     [self.arrayOfMusic addObject:[[PTCritterSound alloc] init:url]];
     url = [[NSBundle mainBundle] URLForResource:@"start" withExtension:@".wav"];
     [self.arrayOfMusic addObject:[[PTCritterSound alloc] init:url]];
+    url = [[NSBundle mainBundle] URLForResource:@"gameover" withExtension:@".wav"];
+    [self.arrayOfMusic addObject:[[PTCritterSound alloc] init:url]];
     
     //0: eating 1: normal 2:happy 3: mad 4: full 5: sleepy 6: sad 7: mad_very 8: sleepy_very 9: hungry 10: hungry_very 11: Egg 12: Dying
     
