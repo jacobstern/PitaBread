@@ -10,7 +10,10 @@
 
 @interface PTBackgroundView : UIView
 
+@property NSMutableArray *circles;
+
 - (void)drawRect:(CGRect)rect;
 - (void)nextFrame;
+- (void)initializeCircles;
 
 @end

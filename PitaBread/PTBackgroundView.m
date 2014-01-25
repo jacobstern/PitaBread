@@ -8,15 +8,43 @@
 
 #import "PTBackgroundView.h"
 
+typedef struct _PTBackgroundCircle {
+    CGFloat x, y, size;
+    CGFloat velocity;
+    CGFloat r, g, b, a;
+} PTBackgroundCircle;
+
+static const int kCirclesCount = 30;
+
+PTBackgroundCircle GenerateCircle(CGFloat xMin, CGFloat xMax, CGFloat y)
+{
+    float velocity = (rand() / (float)RAND_MAX) * 0.5 + 0.1;
+    float size = (rand() / (float)RAND_MAX) * 5.0 + 15.0;
+    float green = ((rand() % 2) * 0.05) + 0.92;
+    PTBackgroundCircle circle = {
+        .x = xMin + ((xMax + 60.0 - xMin) * (rand() / (float)RAND_MAX)),
+        .y = y, .size = size, .velocity = velocity,
+        .r = 0.94, .g = green, .b = 1.00, .a = 1.0
+    };
+    
+    return circle;
+}
+
 @implementation PTBackgroundView
 
-- (id)initWithFrame:(CGRect)frame
+- (void)awakeFromNib
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+    [self initializeCircles];
+}
+
+- (void)initializeCircles
+{
+    self.circles = [[NSMutableArray alloc] init];
+    for (int i = 0; i < kCirclesCount; i++) {
+        PTBackgroundCircle circle = GenerateCircle(0, self.bounds.size.width, self.bounds.size.height * (float)i / kCirclesCount);
+        id value = [NSValue valueWithBytes:&circle objCType:@encode(PTBackgroundCircle)];
+        [self.circles addObject:value];
     }
-    return self;
 }
 
 - (void)drawRect:(CGRect)rect
@@ -29,15 +57,34 @@
     center.y = bounds.origin.y + bounds.size.height / 2.0;
     CGContextSaveGState(ctx);
     
-    CGContextSetLineWidth(ctx,5);
-    CGContextSetRGBStrokeColor(ctx,0.8,0.8,0.8,1.0);
-    CGContextAddArc(ctx, 30.0,30.0, 30, 0.0, M_PI*2, YES);
-    CGContextStrokePath(ctx);
+    // CGContextSetLineWidth(ctx,5);
+    for (int i = 0; i < self.circles.count; i++) {
+        NSValue *value = [self.circles objectAtIndex:i];
+        PTBackgroundCircle circle;
+        [value getValue:&circle];
+        if (circle.y + circle.size >= 0) {
+            CGContextSetRGBFillColor(ctx, circle.r, circle.g, circle.b, circle.a);
+            CGContextAddArc(ctx, circle.x, circle.y, circle.size, 0.0, M_PI*2, YES);
+            CGContextFillPath(ctx);
+        }
+    }
+
 }
 
 - (void)nextFrame
 {
-   
+   for (int i = 0; i < self.circles.count; i++) {
+       NSValue *value = [self.circles objectAtIndex:i];
+       PTBackgroundCircle circle;
+       [value getValue:&circle];
+       if (circle.y + circle.size > self.bounds.size.height) {
+           circle = GenerateCircle(0.0, self.bounds.size.width, -30.0);
+       } else {
+           circle.y = circle.y + circle.velocity;
+       }
+       value = [NSValue valueWithBytes:&circle objCType:@encode(PTBackgroundCircle)];
+       self.circles[i] = value;
+   }
 }
 
 @end
