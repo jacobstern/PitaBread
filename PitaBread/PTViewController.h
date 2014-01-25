@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SpriteKit/SpriteKit.h>
 #import <CoreMotion/CoreMotion.h>
 #import "PTCritter.h"
 #import "PTBackgroundView.h"
@@ -24,13 +23,16 @@
 @property UIImageView* bowlImage;
 @property UIImageView* foodImage;
 @property UIImageView* imageOfCritter;
+@property UIImageView* imageOfEgg;
 @property (weak, nonatomic) IBOutlet PTBackgroundView *backgroundView;
 
 @property BOOL isInitialLoad;
 @property BOOL critterBeingBorn;
 @property BOOL isEating;
+@property BOOL isHatching;
 
 @property NSInteger moodCounter;
+@property NSInteger hatchingCounter;
 
 - (void)transitionToCameraView;
 

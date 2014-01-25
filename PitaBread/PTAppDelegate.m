@@ -27,7 +27,7 @@
     url = [[NSBundle mainBundle] URLForResource:@"start" withExtension:@".wav"];
     [self.arrayOfMusic addObject:[[PTCritterSound alloc] init:url]];
     
-    //0: eating 1: normal 2:happy 3: mad 4: full 5: sleepy 6: sad 7: mad_very 8: sleepy_very 9: hungry 10: hungry_very
+    //0: eating 1: normal 2:happy 3: mad 4: full 5: sleepy 6: sad 7: mad_very 8: sleepy_very 9: hungry 10: hungry_very 11: Egg
     
     PTCritter* eatingCritter = [[PTCritter alloc] init];
     eatingCritter.arrayOfImages = [[NSMutableArray alloc] init];
@@ -129,7 +129,6 @@
     [[madCritter arrayOfImages] addObject:[UIImage imageNamed:@"mad_0020.png"]];
     
     [self.arrayOfCritters addObject:madCritter];
-    
     
     PTCritter* fullCritter = [[PTCritter alloc] init];
     fullCritter.arrayOfImages = [[NSMutableArray alloc] init];
@@ -311,6 +310,32 @@
     [[hungry_veryCritter arrayOfImages] addObject:[UIImage imageNamed:@"hungry_very_0020.png"]];
     
     [self.arrayOfCritters addObject:hungry_veryCritter];
+    
+    
+    PTCritter* eggCritter = [[PTCritter alloc] init];
+    eggCritter.arrayOfImages = [[NSMutableArray alloc] init];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0001.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0002.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0003.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0004.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0005.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0006.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0007.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0008.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0009.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0010.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0011.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0012.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0013.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0014.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0015.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0016.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0017.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0018.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0019.png"]];
+    [[eggCritter arrayOfImages] addObject:[UIImage imageNamed:@"egg_0020.png"]];
+    
+    [self.arrayOfCritters addObject:eggCritter];
     // Override point for customization after application launch.
     return YES;
 }
