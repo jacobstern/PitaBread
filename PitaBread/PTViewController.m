@@ -254,7 +254,7 @@
     [[self view] addSubview:self.imageOfCritter];
     
     UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(petCritter:)];
-    swipeGesture.direction = (UISwipeGestureRecognizerDirectionDown | UISwipeGestureRecognizerDirectionLeft | UISwipeGestureRecognizerDirectionRight);
+    swipeGesture.direction = (UISwipeGestureRecognizerDirectionDown);
     [self.view addGestureRecognizer:swipeGesture];
 }
 
@@ -263,13 +263,12 @@
     NSInteger lCurrentWidth = self.view.frame.size.width;
     NSInteger lCurrentHeight = self.view.frame.size.height;
     
-    CGPoint pt = [recognizer locationOfTouch:0 inView:[self view]];
-    if(pt.x < lCurrentWidth/2 + 70 && pt.x > lCurrentWidth/2 - 70 && !self.isDead
-       && pt.y < lCurrentHeight/2 + 70 && pt.y > lCurrentHeight/2 - 70 && !self.isEating)
-    {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
                                              (unsigned long)NULL), ^(void) {
-        
+        CGPoint pt = [recognizer locationOfTouch:0 inView:[self view]];
+        if(pt.x < lCurrentWidth/2 + 130 && pt.x > lCurrentWidth/2 - 130 && !self.isDead
+           && pt.y < lCurrentHeight/2 + 130 && pt.y > lCurrentHeight/2 - 130 && !self.isEating)
+        {
             PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
 
             if(!self.isDead)
@@ -280,8 +279,9 @@
                 self.critterData.sleep = self.critterData.sleep + 10;
                 self.critterData.hunger =  self.critterData.hunger + 10;
             }
-        });
-    }
+        }
+        
+    });
 }
 
 - (void)playMusic:(int)type
