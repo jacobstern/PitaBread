@@ -30,7 +30,7 @@
 		C487896818936D78009D79D5 /* test_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C487896618936D78009D79D5 /* test_photo.jpg */; };
 		C487898418942329009D79D5 /* angry.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487897C18942329009D79D5 /* angry.wav */; };
 		C487898518942329009D79D5 /* happy.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487897D18942329009D79D5 /* happy.wav */; };
-		C487898618942329009D79D5 /* Hot Pockets.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487897E18942329009D79D5 /* Hot Pockets.wav */; };
+		C487898618942329009D79D5 /* hotpockets.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487897E18942329009D79D5 /* hotpockets.wav */; };
 		C487898718942329009D79D5 /* hungry.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487897F18942329009D79D5 /* hungry.wav */; };
 		C487898818942329009D79D5 /* sad.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487898018942329009D79D5 /* sad.wav */; };
 		C487898918942329009D79D5 /* sleepy.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487898118942329009D79D5 /* sleepy.wav */; };
@@ -427,7 +427,7 @@
 		C48789691893777A009D79D5 /* natural_hotpocket.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = natural_hotpocket.jpg; sourceTree = "<group>"; };
 		C487897C18942329009D79D5 /* angry.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = angry.wav; sourceTree = "<group>"; };
 		C487897D18942329009D79D5 /* happy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = happy.wav; sourceTree = "<group>"; };
-		C487897E18942329009D79D5 /* Hot Pockets.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Hot Pockets.wav"; sourceTree = "<group>"; };
+		C487897E18942329009D79D5 /* hotpockets.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hotpockets.wav; sourceTree = "<group>"; };
 		C487897F18942329009D79D5 /* hungry.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hungry.wav; sourceTree = "<group>"; };
 		C487898018942329009D79D5 /* sad.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sad.wav; sourceTree = "<group>"; };
 		C487898118942329009D79D5 /* sleepy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sleepy.wav; sourceTree = "<group>"; };
@@ -906,7 +906,7 @@
 			children = (
 				C487897C18942329009D79D5 /* angry.wav */,
 				C487897D18942329009D79D5 /* happy.wav */,
-				C487897E18942329009D79D5 /* Hot Pockets.wav */,
+				C487897E18942329009D79D5 /* hotpockets.wav */,
 				C487897F18942329009D79D5 /* hungry.wav */,
 				C487898018942329009D79D5 /* sad.wav */,
 				C487898118942329009D79D5 /* sleepy.wav */,
@@ -1620,7 +1620,7 @@
 				F191EF511894029500DF33B5 /* happy_0008.png in Resources */,
 				F191F02E1894029500DF33B5 /* smelly_0009.png in Resources */,
 				F191EFF91894029500DF33B5 /* sad_very_0016.png in Resources */,
-				C487898618942329009D79D5 /* Hot Pockets.wav in Resources */,
+				C487898618942329009D79D5 /* hotpockets.wav in Resources */,
 				C487898818942329009D79D5 /* sad.wav in Resources */,
 				F191F02A1894029500DF33B5 /* smelly_0005.png in Resources */,
 				F191EFBF1894029500DF33B5 /* mad_very_0018.png in Resources */,
