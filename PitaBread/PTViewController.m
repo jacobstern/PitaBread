@@ -7,7 +7,7 @@
 //
 
 #import "PTViewController.h"
-#import "PTMyScene.h"
+#import "PTCritterScene.h"
 
 @implementation PTViewController
 
@@ -21,7 +21,7 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [PTMyScene sceneWithSize:skView.bounds.size];
+    SKScene * scene = [PTCritterScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

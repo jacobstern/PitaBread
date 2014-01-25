@@ -16,7 +16,7 @@
 		23DAACF818933AD30016CE31 /* PTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAACF718933AD30016CE31 /* PTAppDelegate.m */; };
 		23DAACFB18933AD30016CE31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23DAACF918933AD30016CE31 /* Main.storyboard */; };
 		23DAACFE18933AD30016CE31 /* PTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAACFD18933AD30016CE31 /* PTViewController.m */; };
-		23DAAD0118933AD30016CE31 /* PTMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD0018933AD30016CE31 /* PTMyScene.m */; };
+		23DAAD0118933AD30016CE31 /* PTCritterScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD0018933AD30016CE31 /* PTCritterScene.m */; };
 		23DAAD0318933AD30016CE31 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 23DAAD0218933AD30016CE31 /* Spaceship.png */; };
 		23DAAD0518933AD30016CE31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23DAAD0418933AD30016CE31 /* Images.xcassets */; };
 		23DAAD0C18933AD30016CE31 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAAD0B18933AD30016CE31 /* XCTest.framework */; };
@@ -24,6 +24,8 @@
 		23DAAD0E18933AD30016CE31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAACE918933AD30016CE31 /* UIKit.framework */; };
 		23DAAD1618933AD30016CE31 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 23DAAD1418933AD30016CE31 /* InfoPlist.strings */; };
 		23DAAD1818933AD30016CE31 /* PitaBreadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD1718933AD30016CE31 /* PitaBreadTests.m */; };
+		23DAAD231893431A0016CE31 /* PTCritter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD221893431A0016CE31 /* PTCritter.m */; };
+		23DAAD26189344270016CE31 /* PTClientSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD25189344270016CE31 /* PTClientSingleton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +53,8 @@
 		23DAACFA18933AD30016CE31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23DAACFC18933AD30016CE31 /* PTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTViewController.h; sourceTree = "<group>"; };
 		23DAACFD18933AD30016CE31 /* PTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTViewController.m; sourceTree = "<group>"; };
-		23DAACFF18933AD30016CE31 /* PTMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTMyScene.h; sourceTree = "<group>"; };
-		23DAAD0018933AD30016CE31 /* PTMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTMyScene.m; sourceTree = "<group>"; };
+		23DAACFF18933AD30016CE31 /* PTCritterScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTCritterScene.h; sourceTree = "<group>"; };
+		23DAAD0018933AD30016CE31 /* PTCritterScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTCritterScene.m; sourceTree = "<group>"; };
 		23DAAD0218933AD30016CE31 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		23DAAD0418933AD30016CE31 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		23DAAD0A18933AD30016CE31 /* PitaBreadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitaBreadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +62,10 @@
 		23DAAD1318933AD30016CE31 /* PitaBreadTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PitaBreadTests-Info.plist"; sourceTree = "<group>"; };
 		23DAAD1518933AD30016CE31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		23DAAD1718933AD30016CE31 /* PitaBreadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PitaBreadTests.m; sourceTree = "<group>"; };
+		23DAAD211893431A0016CE31 /* PTCritter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCritter.h; sourceTree = "<group>"; };
+		23DAAD221893431A0016CE31 /* PTCritter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCritter.m; sourceTree = "<group>"; };
+		23DAAD24189344270016CE31 /* PTClientSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTClientSingleton.h; sourceTree = "<group>"; };
+		23DAAD25189344270016CE31 /* PTClientSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTClientSingleton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,11 +129,15 @@
 			children = (
 				23DAACF618933AD30016CE31 /* PTAppDelegate.h */,
 				23DAACF718933AD30016CE31 /* PTAppDelegate.m */,
+				23DAAD24189344270016CE31 /* PTClientSingleton.h */,
+				23DAAD25189344270016CE31 /* PTClientSingleton.m */,
+				23DAAD211893431A0016CE31 /* PTCritter.h */,
+				23DAAD221893431A0016CE31 /* PTCritter.m */,
 				23DAACF918933AD30016CE31 /* Main.storyboard */,
 				23DAACFC18933AD30016CE31 /* PTViewController.h */,
 				23DAACFD18933AD30016CE31 /* PTViewController.m */,
-				23DAACFF18933AD30016CE31 /* PTMyScene.h */,
-				23DAAD0018933AD30016CE31 /* PTMyScene.m */,
+				23DAACFF18933AD30016CE31 /* PTCritterScene.h */,
+				23DAAD0018933AD30016CE31 /* PTCritterScene.m */,
 				23DAAD0218933AD30016CE31 /* Spaceship.png */,
 				23DAAD0418933AD30016CE31 /* Images.xcassets */,
 				23DAACEE18933AD30016CE31 /* Supporting Files */,
@@ -263,9 +273,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23DAAD26189344270016CE31 /* PTClientSingleton.m in Sources */,
 				23DAACF818933AD30016CE31 /* PTAppDelegate.m in Sources */,
 				23DAACFE18933AD30016CE31 /* PTViewController.m in Sources */,
-				23DAAD0118933AD30016CE31 /* PTMyScene.m in Sources */,
+				23DAAD231893431A0016CE31 /* PTCritter.m in Sources */,
+				23DAAD0118933AD30016CE31 /* PTCritterScene.m in Sources */,
 				23DAACF418933AD30016CE31 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

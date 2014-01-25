@@ -1,5 +1,5 @@
 //
-//  PTMyScene.h
+//  PTCritterScene.h
 //  PitaBread
 //
 
@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface PTMyScene : SKScene
+@interface PTCritterScene : SKScene
 
 @end

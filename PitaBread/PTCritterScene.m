@@ -1,14 +1,14 @@
 //
-//  PTMyScene.m
+//  PTCritterScene.m
 //  PitaBread
 //
 //  Created by Jacob Stern on 1/24/14.
 //  Copyright (c) 2014 Team Name Optional. All rights reserved.
 //
 
-#import "PTMyScene.h"
+#import "PTCritterScene.h"
 
-@implementation PTMyScene
+@implementation PTCritterScene
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
