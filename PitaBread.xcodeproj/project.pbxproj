@@ -29,6 +29,7 @@
 		23DAAD1818933AD30016CE31 /* PitaBreadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD1718933AD30016CE31 /* PitaBreadTests.m */; };
 		23DAAD231893431A0016CE31 /* PTCritter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD221893431A0016CE31 /* PTCritter.m */; };
 		23DAAD31189370B30016CE31 /* idle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23DAAD30189370B30016CE31 /* idle.jpg */; };
+		C419C7F018944D4500D6C303 /* gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = C419C7EF18944D4500D6C303 /* gameover.wav */; };
 		C4878960189351DE009D79D5 /* PTHotPocketDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = C487895F189351DE009D79D5 /* PTHotPocketDetector.m */; };
 		C487896718936D78009D79D5 /* PTColorHistogram.m in Sources */ = {isa = PBXBuildFile; fileRef = C487896518936D78009D79D5 /* PTColorHistogram.m */; };
 		C487896818936D78009D79D5 /* test_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C487896618936D78009D79D5 /* test_photo.jpg */; };
@@ -493,6 +494,7 @@
 		23DAAD211893431A0016CE31 /* PTCritter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCritter.h; sourceTree = "<group>"; };
 		23DAAD221893431A0016CE31 /* PTCritter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCritter.m; sourceTree = "<group>"; };
 		23DAAD30189370B30016CE31 /* idle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = idle.jpg; sourceTree = "<group>"; };
+		C419C7EF18944D4500D6C303 /* gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover.wav; sourceTree = "<group>"; };
 		C487895E189351DE009D79D5 /* PTHotPocketDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotPocketDetector.h; sourceTree = "<group>"; };
 		C487895F189351DE009D79D5 /* PTHotPocketDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTHotPocketDetector.m; sourceTree = "<group>"; };
 		C487896418936D78009D79D5 /* PTColorHistogram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTColorHistogram.h; sourceTree = "<group>"; };
@@ -1061,6 +1063,7 @@
 		C487897B18942329009D79D5 /* music */ = {
 			isa = PBXGroup;
 			children = (
+				C419C7EF18944D4500D6C303 /* gameover.wav */,
 				C487897C18942329009D79D5 /* angry.wav */,
 				C487897D18942329009D79D5 /* happy.wav */,
 				C487897E18942329009D79D5 /* hotpockets.wav */,
@@ -1675,7 +1678,7 @@
 				ORGANIZATIONNAME = "Team Name Optional";
 				TargetAttributes = {
 					23DAACE118933AD30016CE31 = {
-						DevelopmentTeam = 58M2Y4N75J;
+						DevelopmentTeam = KDYRJBGPGV;
 					};
 					23DAAD0918933AD30016CE31 = {
 						TestTargetID = 23DAACE118933AD30016CE31;
@@ -2067,6 +2070,7 @@
 				F1A620671894487800FE30D9 /* dying_0030.png in Resources */,
 				F191EF6B1894029500DF33B5 /* happy_very_0014.png in Resources */,
 				F1A6204D1894487800FE30D9 /* dying_0004.png in Resources */,
+				C419C7F018944D4500D6C303 /* gameover.wav in Resources */,
 				C487898718942329009D79D5 /* hungry.wav in Resources */,
 				F191EF861894029500DF33B5 /* hungry_very_0001.png in Resources */,
 				231350EE18942C4900178915 /* speech_ZZZ.png in Resources */,

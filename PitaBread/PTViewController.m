@@ -99,14 +99,6 @@
     
   	NSError *error;
     
-  	self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
-    
-  	if (self.recorder) {
-  		[self.recorder prepareToRecord];
-  		self.recorder.meteringEnabled = YES;
-  		[self.recorder record];
-  	} else
-  		NSLog([error description]);
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
     [session setActive:YES error:nil];
@@ -275,6 +267,9 @@
     {
         self.isDead = TRUE;
         [self.circleImage removeFromSuperview];
+        if (self.currentCritter != [[appDelegate arrayOfCritters] objectAtIndex:12]) {
+            [[[appDelegate arrayOfMusic] objectAtIndex:4] playSound];
+        }
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:12];
     }
     else if(self.moodCounter <= 0 && !self.isEating && self.critterData.sleep > 200 && self.critterData.hunger > 200 && self.critterData.hunger < 1200)
@@ -347,9 +342,11 @@
     
     [self.recorder updateMeters];
     const double ALPHA = 0.05;
-	double peakPowerForChannel = pow(10, (0.05 * [self.recorder peakPowerForChannel:0]));
+    double recorderVal = [self.recorder peakPowerForChannel:0];
+    NSLog(@"MIC VALUE: %.20f\n", recorderVal);
+	double peakPowerForChannel = pow(10, (0.05 * recorderVal));
 	self.lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * self.lowPassResults;
-    NSLog(@"MIC VALUE: %.20f\n", self.lowPassResults);
+//    NSLog(@"MIC VALUE: %.20f\n", self.lowPassResults);
 	if (self.lowPassResults > 0.95)
 		NSLog(@"Mic blow detected");
     
