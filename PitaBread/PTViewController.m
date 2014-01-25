@@ -75,6 +75,13 @@
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(critterBorn)];
     singleTap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:singleTap];
+    
+    NSInteger lCurrentWidth = self.view.frame.size.width;
+    self.speechImage = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth / 2.0 - (213.75 / 2) + 15.0, 75, 213.75, 75)];
+    self.speechImage.image = NULL;
+    [self.view addSubview:self.speechImage];
+    
+    [self showSpeechBubble:@"speech_FU.png" duration:5.0];
 }
 
 - (void)critterBorn
@@ -416,6 +423,8 @@
     });
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+    self.messageTimer = nil;
 }
 
 
@@ -474,6 +483,22 @@
     [super didReceiveMemoryWarning];
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     // Release any cached data, images, etc that aren't in use.
+}
+
+- (void)closeSpeechBubble
+{
+    self.speechImage.image = nil;
+}
+
+- (void)showSpeechBubble:(NSString *)imageName duration:(NSTimeInterval)duration
+{
+    UIImage *image = [UIImage imageNamed:imageName];
+    if (self.messageTimer) {
+        [self.messageTimer invalidate];
+    }
+    self.messageTimer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(closeSpeechBubble) userInfo:nil repeats:NO];
+    [[NSRunLoop currentRunLoop] addTimer:self.messageTimer forMode:NSRunLoopCommonModes];
+    self.speechImage.image = image;
 }
 
 @end

@@ -24,7 +24,9 @@
 @property UIImageView* bowlImage;
 @property UIImageView* foodImage;
 @property UIImageView* imageOfCritter;
+@property UIImageView* speechImage;
 @property (weak, nonatomic) IBOutlet PTBackgroundView *backgroundView;
+@property NSTimer *messageTimer;
 
 @property BOOL isInitialLoad;
 @property BOOL critterBeingBorn;
@@ -33,5 +35,8 @@
 @property NSInteger moodCounter;
 
 - (void)transitionToCameraView;
+
+- (void)closeSpeechBubble;
+- (void)showSpeechBubble:(NSString *)imageName duration:(NSTimeInterval)duration;
 
 @end
