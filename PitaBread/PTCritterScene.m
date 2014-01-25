@@ -54,6 +54,27 @@
     return self;
 }
 
+
+-(void)drawCameraCircle
+{
+    NSInteger lCurrentHeight = self.view.frame.size.height;
+    
+    NSInteger radius = 60;
+    UIImageView* circleImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, lCurrentHeight-radius-30, radius, radius)];
+    circleImage.image = [UIImage imageNamed:@"camera.png"];
+    [self.view addSubview:(circleImage)];
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goToCamera)];
+    singleTap.numberOfTapsRequired = 1;
+    circleImage.userInteractionEnabled = YES;
+    [circleImage addGestureRecognizer:singleTap];
+}
+
+-(void)goToCamera
+{
+    [theParent transitionToCameraView];
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     if (![PTClientSingleton instance].clientCritter) {
@@ -62,9 +83,8 @@
         critterSprite.hidden = NO;
         critterSprite.position = CGPointMake(CGRectGetMidX(self.frame), 0);
         [critterSprite runAction:[SKAction moveByX:0.0 y:CGRectGetMidY(self.frame) duration:1.0]];
+        [self drawCameraCircle];
     }
-    
-    [theParent transitionToCameraView];
 }
 
 -(void)update:(CFTimeInterval)currentTime {

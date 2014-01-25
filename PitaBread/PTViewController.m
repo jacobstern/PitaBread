@@ -56,7 +56,12 @@
         f.size.height -= self.picker.navigationBar.bounds.size.height;
         CGFloat barHeight = (f.size.height - f.size.width) / 2;
         UIGraphicsBeginImageContext(f.size);
-        [[UIColor colorWithWhite:0 alpha:1.0] set];
+        
+        
+        UIColor *backGrndPict=[[UIColor alloc] initWithPatternImage: [UIImage imageNamed:@"test_photo.jpg"]];
+        self.picker.view.backgroundColor=backGrndPict;
+        [backGrndPict set];
+        
         UIRectFillUsingBlendMode(CGRectMake(0, 0, f.size.width, barHeight), kCGBlendModeNormal);
         UIRectFillUsingBlendMode(CGRectMake(0, f.size.height - barHeight, f.size.width, barHeight), kCGBlendModeNormal);
         UIImage *overlayImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -66,6 +71,10 @@
         overlayIV.image = overlayImage;
         [self.picker.cameraOverlayView addSubview:overlayIV];
     }
+    
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(screenSwiped)];
+    swipeGesture.direction = (UISwipeGestureRecognizerDirectionDown);
+    [self.picker.view addGestureRecognizer:swipeGesture];
 
     NSInteger lCurrentWidth = self.view.frame.size.width;
     NSInteger lCurrentHeight = self.view.frame.size.height;
@@ -73,6 +82,11 @@
     NSInteger radius = 60;
     [self presentViewController:self.picker animated:YES completion:NULL];
     [self drawCaptureCircle:lCurrentWidth/2 - radius/2 :lCurrentHeight -  radius - 20 :radius :[self.picker view]];
+}
+
+-(void)screenSwiped
+{
+    [self.picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 
@@ -139,7 +153,6 @@
     });
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    
 }
 
 
