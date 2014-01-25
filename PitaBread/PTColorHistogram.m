@@ -64,7 +64,6 @@
                     int red = self.data[byteIndex];
                     int green = self.data[byteIndex + 1];
                     int blue = self.data[byteIndex + 2];
-                    int alpha = self.data[byteIndex + 3];
                     int redBucket = red / 256.0 * 4.0;
                     int greenBucket = green / 256.0 * 4.0;
                     int blueBucket = blue / 256.0 * 4.0;
@@ -79,7 +78,6 @@
                 int red = self.data[byteIndex];
                 int green = self.data[byteIndex + 1];
                 int blue = self.data[byteIndex + 2];
-                int alpha = self.data[byteIndex + 3];
                 int redBucket = red / 256.0 * 4.0;
                 int greenBucket = green / 256.0 * 4.0;
                 int blueBucket = blue / 256.0 * 4.0;

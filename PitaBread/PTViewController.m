@@ -10,6 +10,7 @@
 #import "PTAppDelegate.h"
 #import "PTColorHistogram.h"
 #import "PTHotPocketDetector.h"
+#import "PTCritterSound.h"
 
 @implementation PTViewController
 
@@ -35,7 +36,10 @@
     
     
     self.isInitialLoad = TRUE;
+    self.isHatching = FALSE;
+    self.hatchingCounter = 0;
     self.critterBeingBorn = FALSE;
+    self.imageOfEgg = [[UIImageView alloc] init];
     
     NSRunLoop *runloop = [NSRunLoop currentRunLoop];
     NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(updateImgIdx) userInfo:nil repeats:YES];
@@ -71,9 +75,50 @@
                                         [self outputRotationData:gyroData.rotationRate];
                                     }];
     
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(critterBorn)];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(startHatching)];
     singleTap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:singleTap];
+    
+    NSInteger lCurrentWidth = self.view.frame.size.width;
+    self.speechImage = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth / 2.0 - (213.75 / 2) + 15.0, 75, 213.75, 75)];
+    self.speechImage.image = NULL;
+    [self.view addSubview:self.speechImage];
+    // Set up mic listener
+    NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];
+    
+  	NSDictionary *settings = [NSDictionary dictionaryWithObjectsAndKeys:
+                              [NSNumber numberWithFloat: 44100.0],                 AVSampleRateKey,
+                              [NSNumber numberWithInt: kAudioFormatAppleLossless], AVFormatIDKey,
+                              [NSNumber numberWithInt: 1],                         AVNumberOfChannelsKey,
+                              [NSNumber numberWithInt: AVAudioQualityMax],         AVEncoderAudioQualityKey,
+                              nil];
+    
+  	NSError *error;
+    
+  	self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
+    
+  	if (self.recorder) {
+  		[self.recorder prepareToRecord];
+  		self.recorder.meteringEnabled = YES;
+  		[self.recorder record];
+  	} else
+  		NSLog([error description]);
+    [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+        if (granted) {
+            // Microphone enabled code
+            NSLog(@"mic enabled");
+        }
+        else {
+            // Microphone disabled code
+            NSLog(@"mic disabled");
+        }
+    }];
+    [self showSpeechBubble:@"speech_FU.png" duration:5.0];
+}
+
+- (void)startHatching
+{
+    self.isHatching = TRUE;
 }
 
 - (void)critterBorn
@@ -94,12 +139,38 @@
                      }
                      completion:^(BOOL finished) {
                          if (finished) {
+                             PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
+                             [[[appDelegate arrayOfMusic] objectAtIndex:3] playSound];
                              self.isInitialLoad = FALSE;
                          }
                      }];
     }
     self.critterBeingBorn = TRUE;
 }
+
+- (void)drawTheEgg
+{
+    PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    NSInteger lCurrentWidth = self.view.frame.size.width;
+    NSInteger lCurrentHeight = self.view.frame.size.height;
+    NSInteger dimensions = 330;
+    [self.imageOfEgg removeFromSuperview];
+    if(self.hatchingCounter < 20)
+    {
+        self.imageOfEgg = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth/2-dimensions/2, lCurrentHeight-dimensions/2-40, dimensions, dimensions)];
+        self.imageOfEgg.image = [[[[appDelegate arrayOfCritters] objectAtIndex:11] arrayOfImages] objectAtIndex:self.hatchingCounter];
+        [[self view] addSubview:self.imageOfEgg];
+        
+        if(self.hatchingCounter == 8)
+            [self critterBorn];
+    }
+    else
+    {
+        self.isHatching = FALSE;
+    }
+}
+
 
 - (void)prepareThePicker
 {
@@ -153,8 +224,16 @@
     [[self view] addSubview:self.imageOfCritter];
 }
 
+- (void)playMusic:(int)type
+{
+    
+}
+
 - (void)updateImgIdx
 {
+    [self.backgroundView nextFrame];
+    [self.backgroundView setNeedsDisplay];
+    
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.critterData.sleep ++;
@@ -170,10 +249,17 @@
     }
     else if(self.critterData.hunger <= 0 && self.moodCounter <= 0 && !self.isEating)
     {
+        if (self.currentCritter != [[appDelegate arrayOfCritters] objectAtIndex:10]) {
+            [[[appDelegate arrayOfMusic] objectAtIndex:0] playSound];
+        }
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:10];
+
     }
     else if(self.critterData.hunger <= 200 && self.moodCounter <= 0 && !self.isEating)
     {
+        if (self.currentCritter != [[appDelegate arrayOfCritters] objectAtIndex:9]) {
+            [[[appDelegate arrayOfMusic] objectAtIndex:0] playSound];
+        }
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:9];
     }
     else if(self.critterData.sleep <= 0 && self.moodCounter <= 0 && !self.isEating)
@@ -201,6 +287,26 @@
         [self drawTheCritter];
         [self drawCameraCircle];
     }
+    else
+    {
+        [self drawTheEgg];
+    }
+    
+    if(self.isHatching)
+    {
+        self.hatchingCounter ++;
+    }
+    
+    // Listen for noise
+    
+    [self.recorder updateMeters];
+    const double ALPHA = 0.05;
+	double peakPowerForChannel = pow(10, (0.05 * [self.recorder peakPowerForChannel:0]));
+	self.lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * self.lowPassResults;
+    NSLog(@"MIC VALUE: %.20f\n", self.lowPassResults);
+	if (self.lowPassResults > 0.95)
+		NSLog(@"Mic blow detected");
+    
 }
 
 -(void)drawBowl
@@ -262,11 +368,12 @@
     if([appDelegate pictureTaken])
     {
         self.isEating = TRUE;
-
-        PTHotPocketDetector* hotPocketDetector = [[PTHotPocketDetector alloc] init];
-        appDelegate.pictureTaken = FALSE;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
                                                  (unsigned long)NULL), ^(void) {
+            
+            PTHotPocketDetector* hotPocketDetector = [[PTHotPocketDetector alloc] init];
+            appDelegate.pictureTaken = FALSE;
             
             NSData *imageData = [appDelegate imageData];
             
@@ -275,13 +382,16 @@
             
             if([hotPocketDetector isHotPocket:pictureView.image])
             {
+                sleep(3);
                 NSLog(@"Is HotPocket");
                 self.moodCounter = 10;
                 self.critterData.hunger += 1500;
                 self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:2];
+                [[[appDelegate arrayOfMusic] objectAtIndex:2] playSound];
             }
             else
             {
+                sleep(3);
                 NSLog(@"Not HotPocket");
                 self.moodCounter = 10;
                 self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:3];
@@ -325,8 +435,8 @@
 -(void)screenSwiped
 {
     self.isEating = FALSE;
-    [self.picker dismissViewControllerAnimated:YES completion:NULL];
     [self.picker removeFromParentViewController];
+    [self.picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 
@@ -370,15 +480,15 @@
 
 - (void)pictureButtonTapped
 {
-    [self.picker takePicture];
     [self.picker removeFromParentViewController];
+    [self.picker takePicture];
 }
 
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
                                              (unsigned long)NULL), ^(void) {
         UIImage *anImage = [info valueForKey:UIImagePickerControllerOriginalImage];
 
@@ -405,6 +515,8 @@
     });
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+    self.messageTimer = nil;
 }
 
 
@@ -439,6 +551,7 @@
         {
             self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:7];
             self.moodCounter = 20;
+            [[[appDelegate arrayOfMusic] objectAtIndex:1] playSound];
         }
         else
         {
@@ -463,6 +576,22 @@
     [super didReceiveMemoryWarning];
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     // Release any cached data, images, etc that aren't in use.
+}
+
+- (void)closeSpeechBubble
+{
+    self.speechImage.image = nil;
+}
+
+- (void)showSpeechBubble:(NSString *)imageName duration:(NSTimeInterval)duration
+{
+    UIImage *image = [UIImage imageNamed:imageName];
+    if (self.messageTimer) {
+        [self.messageTimer invalidate];
+    }
+    self.messageTimer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(closeSpeechBubble) userInfo:nil repeats:NO];
+    [[NSRunLoop currentRunLoop] addTimer:self.messageTimer forMode:NSRunLoopCommonModes];
+    self.speechImage.image = image;
 }
 
 @end
