@@ -28,6 +28,7 @@
 @property UIImageView* imageOfEgg;
 @property UIImageView* speechImage;
 @property UIImageView* circleImage;
+@property UIImageView* splashImage;
 @property (weak, nonatomic) IBOutlet PTBackgroundView *backgroundView;
 @property NSTimer *messageTimer;
 

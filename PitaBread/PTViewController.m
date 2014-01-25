@@ -84,6 +84,7 @@
     [self.view addGestureRecognizer:singleTap];
     
     NSInteger lCurrentWidth = self.view.frame.size.width;
+    NSInteger lCurrentHeight = self.view.frame.size.height;
     self.speechImage = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth / 2.0 - (213.75 / 2) + 15.0, 75, 213.75, 75)];
     self.speechImage.image = nil;
     [self.view addSubview:self.speechImage];
@@ -99,14 +100,6 @@
     
   	NSError *error;
     
-  	self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
-    
-  	if (self.recorder) {
-  		[self.recorder prepareToRecord];
-  		self.recorder.meteringEnabled = YES;
-  		[self.recorder record];
-  	} else
-  		NSLog([error description]);
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
     [session setActive:YES error:nil];
@@ -120,11 +113,23 @@
             NSLog(@"mic disabled");
         }
     }];
+    
+    UIImage *splashImageSource = [UIImage imageNamed:@"logo_cropped.png"];
+    self.splashImage = [[UIImageView alloc] initWithImage:splashImageSource];
+    self.splashImage.frame = CGRectMake(0, 50, lCurrentWidth, .433 * lCurrentWidth);
+    [self.view addSubview:self.splashImage];
 }
 
 - (void)startHatching
 {
-    self.isHatching = TRUE;
+    [UIView animateWithDuration:0.5 delay:0.0 options:0 animations:^{
+        // Animate the alpha value of your imageView from 1.0 to 0.0 here
+        self.splashImage.alpha = 0.0f;
+    } completion:^(BOOL finished) {
+        // Once the animation is completed and the alpha has gone to 0.0, hide the view for good
+        self.splashImage.hidden = YES;
+        self.isHatching = TRUE;
+    }];
 }
 
 - (void)critterBorn
@@ -273,7 +278,7 @@
     
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    if(!self.isDead)
+    if(!self.isDead && self.critterBeingBorn)
     {
         self.critterData.sleep ++;
         self.critterData.hunger --;
@@ -294,6 +299,9 @@
     {
         self.isDead = TRUE;
         [self.circleImage removeFromSuperview];
+        if (self.currentCritter != [[appDelegate arrayOfCritters] objectAtIndex:12]) {
+            [[[appDelegate arrayOfMusic] objectAtIndex:4] playSound];
+        }
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:12];
     }
     else if(self.moodCounter <= 0 && !self.isEating && self.critterData.sleep > 200 && self.critterData.hunger > 200 && self.critterData.hunger < 1200)
@@ -366,9 +374,11 @@
     
     [self.recorder updateMeters];
     const double ALPHA = 0.05;
-	double peakPowerForChannel = pow(10, (0.05 * [self.recorder peakPowerForChannel:0]));
+    double recorderVal = [self.recorder peakPowerForChannel:0];
+    NSLog(@"MIC VALUE: %.20f\n", recorderVal);
+	double peakPowerForChannel = pow(10, (0.05 * recorderVal));
 	self.lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * self.lowPassResults;
-    NSLog(@"MIC VALUE: %.20f\n", self.lowPassResults);
+//    NSLog(@"MIC VALUE: %.20f\n", self.lowPassResults);
 	if (self.lowPassResults > 0.95)
 		NSLog(@"Mic blow detected");
     
