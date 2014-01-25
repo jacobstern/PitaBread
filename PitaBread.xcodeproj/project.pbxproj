@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		231350E718940B7200178915 /* PTBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 231350E618940B7200178915 /* PTBackgroundView.m */; };
 		2345490118937D5B00CC674C /* idle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2345490018937D5B00CC674C /* idle.jpg */; };
 		23DAACE618933AD30016CE31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAACE518933AD30016CE31 /* Foundation.framework */; };
 		23DAACE818933AD30016CE31 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DAACE718933AD30016CE31 /* CoreGraphics.framework */; };
@@ -77,6 +78,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		231350E518940B7200178915 /* PTBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBackgroundView.h; sourceTree = "<group>"; };
+		231350E618940B7200178915 /* PTBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBackgroundView.m; sourceTree = "<group>"; };
 		2345490018937D5B00CC674C /* idle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = idle.jpg; sourceTree = SOURCE_ROOT; };
 		23DAACE218933AD30016CE31 /* PitaBread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PitaBread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23DAACE518933AD30016CE31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -209,6 +212,8 @@
 				D43F94C91893A116000C1B51 /* PTConstants.m */,
 				2345490018937D5B00CC674C /* idle.jpg */,
 				C48789691893777A009D79D5 /* natural_hotpocket.jpg */,
+				231350E518940B7200178915 /* PTBackgroundView.h */,
+				231350E618940B7200178915 /* PTBackgroundView.m */,
 				C487896418936D78009D79D5 /* PTColorHistogram.h */,
 				C487896518936D78009D79D5 /* PTColorHistogram.m */,
 				C487896618936D78009D79D5 /* test_photo.jpg */,
@@ -467,6 +472,7 @@
 				23DAACF818933AD30016CE31 /* PTAppDelegate.m in Sources */,
 				C487896718936D78009D79D5 /* PTColorHistogram.m in Sources */,
 				23DAACFE18933AD30016CE31 /* PTViewController.m in Sources */,
+				231350E718940B7200178915 /* PTBackgroundView.m in Sources */,
 				23DAAD231893431A0016CE31 /* PTCritter.m in Sources */,
 				D43F94CA1893A116000C1B51 /* PTConstants.m in Sources */,
 				23DAACF418933AD30016CE31 /* main.m in Sources */,

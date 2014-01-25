@@ -149,6 +149,9 @@
 
 - (void)updateImgIdx
 {
+    [self.backgroundView nextFrame];
+    [self.backgroundView setNeedsDisplay];
+    
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.moodCounter --;
