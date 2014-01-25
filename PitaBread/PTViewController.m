@@ -95,6 +95,8 @@
                      }
                      completion:^(BOOL finished) {
                          if (finished) {
+                             PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
+                             [[[appDelegate arrayOfMusic] objectAtIndex:3] playSound];
                              self.isInitialLoad = FALSE;
                          }
                      }];
@@ -179,13 +181,18 @@
     }
     else if(self.critterData.hunger <= 0 && self.moodCounter <= 0 && !self.isEating)
     {
+        if (self.currentCritter != [[appDelegate arrayOfCritters] objectAtIndex:10]) {
+            [[[appDelegate arrayOfMusic] objectAtIndex:0] playSound];
+        }
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:10];
-         [[[appDelegate arrayOfMusic] objectAtIndex:0] playSound];
+
     }
     else if(self.critterData.hunger <= 200 && self.moodCounter <= 0 && !self.isEating)
     {
+        if (self.currentCritter != [[appDelegate arrayOfCritters] objectAtIndex:9]) {
+            [[[appDelegate arrayOfMusic] objectAtIndex:0] playSound];
+        }
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:9];
-         [[[appDelegate arrayOfMusic] objectAtIndex:0] playSound];
     }
     else if(self.critterData.sleep <= 0 && self.moodCounter <= 0 && !self.isEating)
     {
@@ -291,6 +298,7 @@
                 self.moodCounter = 10;
                 self.critterData.hunger += 1500;
                 self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:2];
+                [[[appDelegate arrayOfMusic] objectAtIndex:2] playSound];
             }
             else
             {
