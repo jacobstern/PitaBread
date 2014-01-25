@@ -38,6 +38,7 @@
     self.isInitialLoad = TRUE;
     self.isHatching = FALSE;
     self.isDead = FALSE;
+    self.inEgg = TRUE;
     self.hatchingCounter = 0;
     self.critterBeingBorn = FALSE;
     self.imageOfEgg = [[UIImageView alloc] init];
@@ -124,6 +125,7 @@
 
 - (void)critterBorn
 {
+    self.inEgg = FALSE;
     if([self isInitialLoad] && ![self critterBeingBorn])
     {
         NSInteger lCurrentWidth = self.view.frame.size.width;
@@ -573,7 +575,7 @@
         {
             self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:7];
             self.moodCounter = 20;
-            if(!self.isDead)
+            if(!self.isDead && !self.inEgg)
                 [[[appDelegate arrayOfMusic] objectAtIndex:1] playSound];
         }
         else
