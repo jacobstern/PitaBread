@@ -253,6 +253,9 @@
     {
         self.isDead = TRUE;
         [self.circleImage removeFromSuperview];
+        if (self.currentCritter != [[appDelegate arrayOfCritters] objectAtIndex:12]) {
+            [[[appDelegate arrayOfMusic] objectAtIndex:4] playSound];
+        }
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:12];
     }
     else if(self.moodCounter <= 0 && !self.isEating && self.critterData.sleep > 200 && self.critterData.hunger > 200 && self.critterData.hunger < 1200)
