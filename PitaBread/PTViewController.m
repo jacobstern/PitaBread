@@ -458,6 +458,7 @@
         {
             self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:7];
             self.moodCounter = 20;
+            [[[appDelegate arrayOfMusic] objectAtIndex:1] playSound];
         }
         else
         {
