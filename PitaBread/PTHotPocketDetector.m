@@ -27,6 +27,7 @@
     for (int i=3*16; i<4*16; i++) {
         total_red += hist.histogram[i];
     }
+    NSLog(@"red percent: %f\n", total_red);
     if (total_red > .35) {
         return true;
     }

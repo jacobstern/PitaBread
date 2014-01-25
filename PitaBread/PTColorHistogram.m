@@ -43,17 +43,19 @@
 
 - (void)makeHistogram
 {
-    NSMutableArray* a = [NSMutableArray alloc];
-    float *histogram = malloc(4 * 4 * 4 * sizeof(float));
-    memset(histogram, 0, 64);
+    float *histogram = malloc(64 * sizeof(float));
+    memset(histogram, 0, 64*sizeof(float));
     for (int i=0; i<self.height; i++) {
         for (int j=0; j<self.width; j++) {
-            int byteIndex = (self.width * 4 * i) + j * 4;
+            int byteIndex = (self.width * i * 4) + j * 4;
             int red = self.data[byteIndex];
             int green = self.data[byteIndex + 1];
             int blue = self.data[byteIndex + 2];
             int alpha = self.data[byteIndex + 3];
-            int bucketIndex = red*16 + green*4 + blue;
+            int redBucket = red / 256.0 * 4.0;
+            int greenBucket = green / 256.0 * 4.0;
+            int blueBucket = blue / 256.0 * 4.0;
+            int bucketIndex = redBucket*16 + greenBucket*4 + blueBucket;
             histogram[bucketIndex]++;
         }
     }
