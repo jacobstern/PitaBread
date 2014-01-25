@@ -43,9 +43,12 @@
 @property AVAudioRecorder *recorder;
 @property double lowPassResults;
 
+@property BOOL suppressHungryMessage;
+
 - (void)transitionToCameraView;
 
 - (void)closeSpeechBubble;
 - (void)showSpeechBubble:(NSString *)imageName duration:(NSTimeInterval)duration;
+- (BOOL)isShowingSpeechBubble;
 
 @end
