@@ -16,6 +16,8 @@
 
 @implementation PTCritterSprite
 
+static const NSString *kAnimationKey = @"Animation";
+
 + (PTCritterSprite *)spriteWithSpriteSheet:(SKTexture *)theSpriteSheet
 {
     PTCritterSprite *theSprite = [[PTCritterSprite alloc] init];
@@ -35,7 +37,7 @@
     theSprite.size = CGSizeApplyAffineTransform(theSpriteSheet.size, CGAffineTransformMakeScale(1.0f / spriteSheetWidth, 1.0f / spriteSheetHeight));
     
     SKAction *idleAnimation = [SKAction animateWithTextures:spriteTextures timePerFrame:0.042];
-    [theSprite runAction:[SKAction repeatActionForever:idleAnimation]];
+    [theSprite runAction:[SKAction repeatActionForever:idleAnimation] withKey:kAnimationKey.copy];
     
     return theSprite;
 }
