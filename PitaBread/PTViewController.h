@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreMotion/CoreMotion.h>
+#import <AVFoundation/AVFoundation.h>
+#import <CoreAudio/CoreAudioTypes.h>
 #import "PTCritter.h"
 #import "PTBackgroundView.h"
 
@@ -33,6 +35,9 @@
 
 @property NSInteger moodCounter;
 @property NSInteger hatchingCounter;
+
+@property AVAudioRecorder *recorder;
+@property double lowPassResults;
 
 - (void)transitionToCameraView;
 

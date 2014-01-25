@@ -78,6 +78,28 @@
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(startHatching)];
     singleTap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:singleTap];
+    
+    // Set up mic listener
+    NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];
+    
+  	NSDictionary *settings = [NSDictionary dictionaryWithObjectsAndKeys:
+                              [NSNumber numberWithFloat: 44100.0],                 AVSampleRateKey,
+                              [NSNumber numberWithInt: kAudioFormatAppleLossless], AVFormatIDKey,
+                              [NSNumber numberWithInt: 1],                         AVNumberOfChannelsKey,
+                              [NSNumber numberWithInt: AVAudioQualityMax],         AVEncoderAudioQualityKey,
+                              nil];
+    
+  	NSError *error;
+    
+  	self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
+    
+  	if (self.recorder) {
+  		[self.recorder prepareToRecord];
+  		self.recorder.meteringEnabled = YES;
+  		[self.recorder record];
+  	} else
+  		NSLog([error description]);
+    
 }
 
 - (void)startHatching
@@ -260,6 +282,17 @@
     {
         self.hatchingCounter ++;
     }
+    
+    // Listen for noise
+    
+    [self.recorder updateMeters];
+    const double ALPHA = 0.05;
+	double peakPowerForChannel = pow(10, (0.05 * [self.recorder peakPowerForChannel:0]));
+	self.lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * self.lowPassResults;
+    NSlog(@"MIC VALUE: %.20f\n", self.lowPassResults);
+	if (self.lowPassResults > 0.95)
+		NSLog(@"Mic blow detected");
+    
 }
 
 -(void)drawBowl
