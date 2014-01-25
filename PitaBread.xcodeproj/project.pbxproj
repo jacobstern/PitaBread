@@ -27,6 +27,7 @@
 		23DAAD231893431A0016CE31 /* PTCritter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD221893431A0016CE31 /* PTCritter.m */; };
 		23DAAD26189344270016CE31 /* PTClientSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DAAD25189344270016CE31 /* PTClientSingleton.m */; };
 		C4878960189351DE009D79D5 /* PTHotPocketDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = C487895F189351DE009D79D5 /* PTHotPocketDetector.m */; };
+		D4003AD31893564200DC638D /* PTColorHistogram.m in Sources */ = {isa = PBXBuildFile; fileRef = D4003AD21893564200DC638D /* PTColorHistogram.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		23DAAD25189344270016CE31 /* PTClientSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTClientSingleton.m; sourceTree = "<group>"; };
 		C487895E189351DE009D79D5 /* PTHotPocketDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotPocketDetector.h; sourceTree = "<group>"; };
 		C487895F189351DE009D79D5 /* PTHotPocketDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTHotPocketDetector.m; sourceTree = "<group>"; };
+		D4003AD11893564200DC638D /* PTColorHistogram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTColorHistogram.h; sourceTree = "<group>"; };
+		D4003AD21893564200DC638D /* PTColorHistogram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTColorHistogram.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +149,8 @@
 				23DAACEE18933AD30016CE31 /* Supporting Files */,
 				C487895E189351DE009D79D5 /* PTHotPocketDetector.h */,
 				C487895F189351DE009D79D5 /* PTHotPocketDetector.m */,
+				D4003AD11893564200DC638D /* PTColorHistogram.h */,
+				D4003AD21893564200DC638D /* PTColorHistogram.m */,
 			);
 			path = PitaBread;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				23DAACFE18933AD30016CE31 /* PTViewController.m in Sources */,
 				23DAAD231893431A0016CE31 /* PTCritter.m in Sources */,
 				23DAAD0118933AD30016CE31 /* PTCritterScene.m in Sources */,
+				D4003AD31893564200DC638D /* PTColorHistogram.m in Sources */,
 				23DAACF418933AD30016CE31 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

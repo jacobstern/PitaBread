@@ -8,6 +8,7 @@
 
 #import "PTHotPocketDetector.h"
 #import "PTColorHistogram.h"
+#import <Foundation/Foundation.h>
 
 @implementation PTHotPocketDetector
 
