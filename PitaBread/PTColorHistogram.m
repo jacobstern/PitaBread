@@ -24,6 +24,11 @@
     return self;
 }
 
+- (void)delete {
+    free(self.data);
+    free(self.histogram);
+}
+
 - (unsigned char *)extractPixelData:(UIImage *)im
 {
     // First get the image into your data buffer
