@@ -13,7 +13,7 @@
 
 @interface PTViewController : UIViewController<UIImagePickerControllerDelegate, UIAccelerometerDelegate>
 
-@property (nonatomic, retain) UIImagePickerController* picker;
+@property UIImagePickerController* picker;
 @property NSInteger currentImgIdx;
 @property (strong, nonatomic) CMMotionManager *motionManager;
 

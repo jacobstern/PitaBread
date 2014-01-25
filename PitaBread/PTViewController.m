@@ -262,11 +262,12 @@
     if([appDelegate pictureTaken])
     {
         self.isEating = TRUE;
-
-        PTHotPocketDetector* hotPocketDetector = [[PTHotPocketDetector alloc] init];
-        appDelegate.pictureTaken = FALSE;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
                                                  (unsigned long)NULL), ^(void) {
+            
+            PTHotPocketDetector* hotPocketDetector = [[PTHotPocketDetector alloc] init];
+            appDelegate.pictureTaken = FALSE;
             
             NSData *imageData = [appDelegate imageData];
             
@@ -325,8 +326,8 @@
 -(void)screenSwiped
 {
     self.isEating = FALSE;
-    [self.picker dismissViewControllerAnimated:YES completion:NULL];
     [self.picker removeFromParentViewController];
+    [self.picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 
@@ -370,15 +371,15 @@
 
 - (void)pictureButtonTapped
 {
-    [self.picker takePicture];
     [self.picker removeFromParentViewController];
+    [self.picker takePicture];
 }
 
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
                                              (unsigned long)NULL), ^(void) {
         UIImage *anImage = [info valueForKey:UIImagePickerControllerOriginalImage];
 
