@@ -324,9 +324,11 @@
     
     [self.recorder updateMeters];
     const double ALPHA = 0.05;
-	double peakPowerForChannel = pow(10, (0.05 * [self.recorder peakPowerForChannel:0]));
+    double recorderVal = [self.recorder peakPowerForChannel:0];
+    NSLog(@"MIC VALUE: %.20f\n", recorderVal);
+	double peakPowerForChannel = pow(10, (0.05 * recorderVal));
 	self.lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * self.lowPassResults;
-    NSLog(@"MIC VALUE: %.20f\n", self.lowPassResults);
+//    NSLog(@"MIC VALUE: %.20f\n", self.lowPassResults);
 	if (self.lowPassResults > 0.95)
 		NSLog(@"Mic blow detected");
     
