@@ -38,6 +38,7 @@
 		C487898B18942329009D79D5 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = C487898318942329009D79D5 /* start.wav */; };
 		D43F94CA1893A116000C1B51 /* PTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D43F94C91893A116000C1B51 /* PTConstants.m */; };
 		D43F94D518941864000C1B51 /* PTCritterSound.m in Sources */ = {isa = PBXBuildFile; fileRef = D43F94D418941864000C1B51 /* PTCritterSound.m */; };
+		D43F94D718943AE8000C1B51 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43F94D618943AE8000C1B51 /* AVFoundation.framework */; };
 		F12630271893B183008D8989 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = F12630261893B183008D8989 /* camera.png */; };
 		F12630291893BF20008D8989 /* bowl.png in Resources */ = {isa = PBXBuildFile; fileRef = F12630281893BF20008D8989 /* bowl.png */; };
 		F126302B1893BF28008D8989 /* sprite_eating.png in Resources */ = {isa = PBXBuildFile; fileRef = F126302A1893BF28008D8989 /* sprite_eating.png */; };
@@ -437,6 +438,7 @@
 		D43F94C91893A116000C1B51 /* PTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTConstants.m; sourceTree = "<group>"; };
 		D43F94D318941864000C1B51 /* PTCritterSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCritterSound.h; sourceTree = "<group>"; };
 		D43F94D418941864000C1B51 /* PTCritterSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCritterSound.m; sourceTree = "<group>"; };
+		D43F94D618943AE8000C1B51 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F12630261893B183008D8989 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera.png; path = images/camera.png; sourceTree = "<group>"; };
 		F12630281893BF20008D8989 /* bowl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bowl.png; path = images/bowl.png; sourceTree = "<group>"; };
 		F126302A1893BF28008D8989 /* sprite_eating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sprite_eating.png; path = images/sprite_eating.png; sourceTree = "<group>"; };
@@ -788,6 +790,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D43F94D718943AE8000C1B51 /* AVFoundation.framework in Frameworks */,
 				23DAACE818933AD30016CE31 /* CoreGraphics.framework in Frameworks */,
 				23DAACEA18933AD30016CE31 /* UIKit.framework in Frameworks */,
 				23DAACEC18933AD30016CE31 /* SpriteKit.framework in Frameworks */,
@@ -830,6 +833,7 @@
 		23DAACE418933AD30016CE31 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D43F94D618943AE8000C1B51 /* AVFoundation.framework */,
 				23DAACE518933AD30016CE31 /* Foundation.framework */,
 				23DAACE718933AD30016CE31 /* CoreGraphics.framework */,
 				23DAACE918933AD30016CE31 /* UIKit.framework */,
