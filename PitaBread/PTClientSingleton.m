@@ -18,7 +18,13 @@ static PTClientSingleton *theInstance;
 {
     self = [super init];
     if (self) {
-        clientCritter = NULL;
+        clientCritter = nil;
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSDictionary *critterDictionary = [defaults objectForKey:@"critterDictionary"];
+        if (critterDictionary) {
+            [clientCritter setValuesForKeysWithDictionary:critterDictionary];
+        }
     }
     
     return self;
@@ -30,6 +36,15 @@ static PTClientSingleton *theInstance;
         theInstance = [[PTClientSingleton alloc] init];
     
     return theInstance;
+}
+
+- (void)persistToUserDefaults
+{
+    if (clientCritter) {
+        NSDictionary *critterDictionary = [clientCritter dictionaryWithValuesForKeys:@[@"hunger"]];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:critterDictionary forKey:@"critterDictionary"];
+    }
 }
 
 @end

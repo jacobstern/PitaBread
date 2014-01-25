@@ -10,4 +10,6 @@
 
 @interface PTCritter : NSObject
 
+@property (nonatomic) double hunger;
+
 @end

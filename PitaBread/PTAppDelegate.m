@@ -7,6 +7,7 @@
 //
 
 #import "PTAppDelegate.h"
+#import "PTClientSingleton.h"
 
 @implementation PTAppDelegate
 
@@ -40,7 +41,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [[PTClientSingleton instance] persistToUserDefaults];
 }
 
 @end

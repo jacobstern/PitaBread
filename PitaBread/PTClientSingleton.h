@@ -12,6 +12,7 @@
 @interface PTClientSingleton : NSObject
 
 + (PTClientSingleton *)instance;
+- (void)persistToUserDefaults;
 
 @property (nonatomic, readwrite) PTCritter *clientCritter;
 
