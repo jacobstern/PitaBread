@@ -16,32 +16,37 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //GUARD FOR NO CAMERA
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                              message:@"Device has no camera"
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles: nil];
+        
+        [myAlertView show];
+        
+    }
+    else {
+        [self prepareThePicker];
+    }
+    
+    
+    self.isInitialLoad = TRUE;
+    self.critterBeingBorn = FALSE;
+    
     NSRunLoop *runloop = [NSRunLoop currentRunLoop];
-    NSTimer *timer = [NSTimer timerWithTimeInterval:0.2 target:self selector:@selector(updateImgIdx) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(updateImgIdx) userInfo:nil repeats:YES];
     [runloop addTimer:timer forMode:NSRunLoopCommonModes];
     [runloop addTimer:timer forMode:UITrackingRunLoopMode];
     
     self.moodCounter = 0;
     
-<<<<<<< HEAD
-    // Create and configure the scene.
-    self.scene = [PTCritterScene sceneWithSize:skView.bounds.size];
-    self.scene.scaleMode = SKSceneScaleModeAspectFill;
-    self.scene.theParent = self;
-    
-    // Present the scene.
-    [skView presentScene:self.scene];
-    PTHotPocketDetector* dt = [[PTHotPocketDetector alloc] init];
-    UIImage* im = [UIImage imageNamed:@"natural_hotpocket.jpg"];
-    bool ishp = [dt isHotPocket:im];
-    NSLog(ishp ? @"Yes" : @"No");
-    
-=======
-    [self prepareThePicker];
-    
     PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:1];
->>>>>>> 31b0f6500290a945eb3e0edf82c19a1075cd8e02
+    
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = .2;
     self.motionManager.gyroUpdateInterval = .2;
@@ -60,16 +65,34 @@
                                         [self outputRotationData:gyroData.rotationRate];
                                     }];
     
-<<<<<<< HEAD
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(critterBorn)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:singleTap];
 }
 
-- (BOOL)shouldAutorotate
+- (void)critterBorn
 {
-    return YES;
-=======
-    [self drawTheCritter];
-    [self drawCameraCircle];
->>>>>>> 31b0f6500290a945eb3e0edf82c19a1075cd8e02
+    if([self isInitialLoad] && ![self critterBeingBorn])
+    {
+        NSInteger lCurrentWidth = self.view.frame.size.width;
+        NSInteger lCurrentHeight = self.view.frame.size.height;
+        NSInteger dimensions = 200;
+        [self.imageOfCritter removeFromSuperview];
+        self.imageOfCritter = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth/2-dimensions/2, lCurrentHeight+20, dimensions, dimensions)];
+        self.imageOfCritter.image = [[self.currentCritter arrayOfImages] objectAtIndex:self.currentImgIdx];
+        [[self view] addSubview:self.imageOfCritter];
+    
+        [UIView animateWithDuration:2.0 delay:0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         self.imageOfCritter.frame = CGRectMake(lCurrentWidth/2-dimensions/2, lCurrentHeight/2-dimensions/2, self.imageOfCritter.frame.size.width, self.imageOfCritter.frame.size.height);
+                     }
+                     completion:^(BOOL finished) {
+                         if (finished) {
+                             self.isInitialLoad = FALSE;
+                         }
+                     }];
+    }
+    self.critterBeingBorn = TRUE;
 }
 
 - (void)prepareThePicker
@@ -141,9 +164,12 @@
         self.currentImgIdx = 0;
     }
     
-    [self checkPictureTaken];
-    [self drawTheCritter];
-    [self drawCameraCircle];
+    if(!self.isInitialLoad)
+    {
+        [self checkPictureTaken];
+        [self drawTheCritter];
+        [self drawCameraCircle];
+    }
 }
 
 -(void)drawBowl
@@ -238,14 +264,9 @@
     return FALSE;
 }
 
-- (BOOL)shouldAutorotate
-{
-    return YES;
-}
-
 - (void)transitionToCameraView
 {
-    if (self.isEating)
+    if (self.isEating || self.isInitialLoad)
         return;
     else {
         self.isEating= YES;
@@ -363,28 +384,14 @@
 
 -(void)outputAccelertionData:(CMAcceleration)acceleration
 {
-<<<<<<< HEAD
-    if(acceleration.x > 0.5 || acceleration.y > 0.5 || acceleration.z > 0.5)
-    {
-        NSLog(@"Moving");
-=======
     //TODO: For the movements accelormeter;
     if(acceleration.x > 0.5 || acceleration.y > 0.5 || acceleration.z > 0.5)
     {
         [self unhappyCritter];
->>>>>>> 31b0f6500290a945eb3e0edf82c19a1075cd8e02
     }
 }
 -(void)outputRotationData:(CMRotationRate)rotation
-{
-<<<<<<< HEAD
-    if(rotation.x > 0.5 || rotation.y > 0.5 || rotation.z > 0.5)
-    {
-        NSLog(@"Moving");
-    }
-    
-=======
-    //TODO: For the movements accelormeter;
+{    //TODO: For the movements accelormeter;
     if(rotation.x > 0.5 || rotation.y > 0.5 || rotation.z > 0.5)
     {
         [self unhappyCritter];
@@ -398,9 +405,7 @@
     {
         self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:3];
         self.moodCounter = 10;
-    }
->>>>>>> 31b0f6500290a945eb3e0edf82c19a1075cd8e02
-}
+    }}
 
 - (NSUInteger)supportedInterfaceOrientations
 {

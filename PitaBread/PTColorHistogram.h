@@ -15,7 +15,7 @@
 
 - (id)init:(UIImage *)im;
 
-@property unsigned char *data;
+@property(nonatomic, assign) unsigned char *data;
 @property float *histogram;
 @property int height;
 @property int width;
