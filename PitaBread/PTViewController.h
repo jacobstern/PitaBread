@@ -25,6 +25,7 @@
 @property UIImageView* bowlImage;
 @property UIImageView* foodImage;
 @property UIImageView* imageOfCritter;
+@property UIImageView* imageOfEgg;
 @property UIImageView* speechImage;
 @property (weak, nonatomic) IBOutlet PTBackgroundView *backgroundView;
 @property NSTimer *messageTimer;

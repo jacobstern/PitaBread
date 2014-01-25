@@ -83,8 +83,42 @@
     self.speechImage = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth / 2.0 - (213.75 / 2) + 15.0, 75, 213.75, 75)];
     self.speechImage.image = NULL;
     [self.view addSubview:self.speechImage];
+    // Set up mic listener
+    NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];
     
+  	NSDictionary *settings = [NSDictionary dictionaryWithObjectsAndKeys:
+                              [NSNumber numberWithFloat: 44100.0],                 AVSampleRateKey,
+                              [NSNumber numberWithInt: kAudioFormatAppleLossless], AVFormatIDKey,
+                              [NSNumber numberWithInt: 1],                         AVNumberOfChannelsKey,
+                              [NSNumber numberWithInt: AVAudioQualityMax],         AVEncoderAudioQualityKey,
+                              nil];
+    
+  	NSError *error;
+    
+  	self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
+    
+  	if (self.recorder) {
+  		[self.recorder prepareToRecord];
+  		self.recorder.meteringEnabled = YES;
+  		[self.recorder record];
+  	} else
+  		NSLog([error description]);
+    [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+        if (granted) {
+            // Microphone enabled code
+            NSLog(@"mic enabled");
+        }
+        else {
+            // Microphone disabled code
+            NSLog(@"mic disabled");
+        }
+    }];
     [self showSpeechBubble:@"speech_FU.png" duration:5.0];
+}
+
+- (void)startHatching
+{
+    self.isHatching = TRUE;
 }
 
 - (void)critterBorn
