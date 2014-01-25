@@ -27,14 +27,16 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
+        [PTClientSingleton instance].clientCritter = nil;
+        
         self.backgroundColor = [SKColor colorWithRed:0.95 green:0.95 blue:1.0 alpha:1.0];
         
         startPromptLabelNode = [SKLabelNode labelNodeWithFontNamed:@"CourierNewPSMT"];
-        
+        startPromptLabelNode.fontColor = [UIColor blackColor];
         startPromptLabelNode.text = @"Tap to begin the adventure...";
         startPromptLabelNode.fontSize = 14;
         startPromptLabelNode.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame));
+                                       CGRectGetHeight(self.frame) - 200.0);
         [self addChild:startPromptLabelNode];
         
         SKTexture *critterTexture = [SKTexture textureWithImageNamed:@"idle.jpg"];
@@ -42,9 +44,9 @@
         critterSprite = [PTCritterSprite spriteWithSpriteSheet:critterTexture];
         critterSprite.position = CGPointMake(CGRectGetMidX(self.frame),
                                                     CGRectGetMidY(self.frame));
+        critterSprite.hidden = YES;
         
         [self addChild:critterSprite];
-        
     }
     return self;
 }
@@ -54,13 +56,14 @@
     
     if (![PTClientSingleton instance].clientCritter) {
         [PTClientSingleton instance].clientCritter = [[PTCritter alloc] init];
+        startPromptLabelNode.hidden = YES;
+        critterSprite.hidden = NO;
+        critterSprite.position = CGPointMake(CGRectGetMidX(self.frame), 0);
+        [critterSprite runAction:[SKAction moveByX:0.0 y:CGRectGetMidY(self.frame) duration:1.0]];
     }
 }
 
 -(void)update:(CFTimeInterval)currentTime {
-    if ([[PTClientSingleton instance] clientCritter]) {
-        startPromptLabelNode.hidden = YES;
-    }
 }
 
 @end
