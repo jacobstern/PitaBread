@@ -40,6 +40,7 @@
     self.isInitialLoad = TRUE;
     self.isHatching = FALSE;
     self.isDead = FALSE;
+    self.inEgg = TRUE;
     self.hatchingCounter = 0;
     self.critterBeingBorn = FALSE;
     self.imageOfEgg = [[UIImageView alloc] init];
@@ -141,6 +142,7 @@
 
 - (void)critterBorn
 {
+    self.inEgg = FALSE;
     if([self isInitialLoad] && ![self critterBeingBorn])
     {
         NSInteger lCurrentWidth = self.view.frame.size.width;
@@ -250,6 +252,36 @@
     self.imageOfCritter = [[UIImageView alloc] initWithFrame:CGRectMake(lCurrentWidth/2-dimensions/2, lCurrentHeight/2-dimensions/2, dimensions, dimensions)];
     self.imageOfCritter.image = [[self.currentCritter arrayOfImages] objectAtIndex:self.currentImgIdx];
     [[self view] addSubview:self.imageOfCritter];
+    
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(petCritter:)];
+    swipeGesture.direction = (UISwipeGestureRecognizerDirectionDown);
+    [self.view addGestureRecognizer:swipeGesture];
+}
+
+- (void)petCritter:(UISwipeGestureRecognizer*)recognizer
+{
+    NSInteger lCurrentWidth = self.view.frame.size.width;
+    NSInteger lCurrentHeight = self.view.frame.size.height;
+    
+    CGPoint pt = [recognizer locationOfTouch:0 inView:[self view]];
+    if(pt.x < lCurrentWidth/2 + 70 && pt.x > lCurrentWidth/2 - 70 && !self.isDead
+       && pt.y < lCurrentHeight/2 + 70 && pt.y > lCurrentHeight/2 - 70)
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
+                                             (unsigned long)NULL), ^(void) {
+        
+            PTAppDelegate* appDelegate = (PTAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+            if(!self.isDead)
+            {
+                self.moodCounter = 5;
+                self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:13];
+            
+                self.critterData.sleep = self.critterData.sleep + 10;
+                self.critterData.hunger =  self.critterData.hunger + 10;
+            }
+        });
+    }
 }
 
 - (void)playMusic:(int)type
@@ -270,10 +302,10 @@
         self.critterData.hunger --;
     }
     
-    if (self.critterData.hunger <= 200 && self.critterData.hunger % 100 == 0) {
-        [self showSpeechBubble:@"speech_hot.png" duration:4.0];
-    } else if (self.critterData.sleep <= 200 && self.critterData.sleep % 100 == 0) {
-        [self showSpeechBubble:@"speech_ZZZ.png" duration:4.0];
+    if (self.critterData.hunger <= 180 && !self.isDead) {
+        [self showSpeechBubble:@"speech_hot.png" duration:1.0];
+    } else if (self.critterData.sleep <= 180 && !self.isDead) {
+        [self showSpeechBubble:@"speech_ZZZ.png" duration:1.0];
     }/* else if (![self isShowingSpeechBubble] && self.critterData.sleep % 400 == 0) {
         [self showSpeechBubble:@"speech_FU.png" duration:4.0];
     }*/
@@ -446,7 +478,8 @@
                 sleep(3);
                 NSLog(@"Is HotPocket");
                 self.moodCounter = 10;
-                self.critterData.hunger += 1500;
+                if(!self.isDead)
+                    self.critterData.hunger += 1500;
                 self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:2];
                 [[[appDelegate arrayOfMusic] objectAtIndex:2] playSound];
             }
@@ -526,19 +559,22 @@
 {
     NSInteger lCurrentHeight = self.view.frame.size.height;
     
-    [self.circleImage removeFromSuperview];
-    
     NSInteger radius = 60;
+    [self.circleImage removeFromSuperview];
     self.circleImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, lCurrentHeight-radius-30, radius, radius)];
     self.circleImage.image = [UIImage imageNamed:@"camera.png"];
     [self.view addSubview:(self.circleImage)];
     
+    
+    UIImageView* circleButton = [[UIImageView alloc] initWithFrame:CGRectMake(20, lCurrentHeight-radius-30, radius, radius)];
+    [self.view addSubview:(circleButton)];
+    
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(transitionToCameraView)];
     singleTap.numberOfTapsRequired = 1;
-    self.circleImage.userInteractionEnabled = YES;
+    circleButton.userInteractionEnabled = YES;
     
     [self addSwipeGestureForCamera];
-    [self.circleImage addGestureRecognizer:singleTap];
+    [circleButton addGestureRecognizer:singleTap];
 }
 
 - (void)pictureButtonTapped
@@ -614,7 +650,7 @@
         {
             self.currentCritter = [[appDelegate arrayOfCritters] objectAtIndex:7];
             self.moodCounter = 20;
-            if(!self.isDead)
+            if(!self.isDead && !self.inEgg)
                 [[[appDelegate arrayOfMusic] objectAtIndex:1] playSound];
         }
         else

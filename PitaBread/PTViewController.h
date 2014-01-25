@@ -37,6 +37,8 @@
 @property BOOL isEating;
 @property BOOL isHatching;
 @property BOOL isDead;
+@property BOOL inEgg;
+
 
 @property NSInteger moodCounter;
 @property NSInteger hatchingCounter;
